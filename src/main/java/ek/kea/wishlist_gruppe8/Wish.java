@@ -1,4 +1,4 @@
 package ek.kea.wishlist_gruppe8;
 
-public class Wish1 {
+public class Wish {
 }
