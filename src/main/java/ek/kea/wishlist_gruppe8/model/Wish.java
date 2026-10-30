@@ -1,15 +1,25 @@
 package ek.kea.wishlist_gruppe8.model;
 
+import java.math.BigDecimal;
+
 public class Wish {
     private int wish_id;
+    private int wishlist_id;
     private String wish_name;
     private String wish_description;
     private String link;
-    private double price;
+    private BigDecimal price;
 
 
-    public Wish(int wish_id, String name, String description, String link, double price) {
+    public Wish(int wish_id, int wishlist_id, String name, String description, String link, BigDecimal price) {
         this.wish_id = wish_id;
+        this.wishlist_id = wishlist_id;
+        this.wish_name = name;
+        this.wish_description = description;
+        this.link = link;
+        this.price = price;
+    }
+    public Wish(String name, String description, String link, BigDecimal price) {
         this.wish_name = name;
         this.wish_description = description;
         this.link = link;
@@ -23,21 +33,28 @@ public class Wish {
     public void setWish_id(int wish_id) {
         this.wish_id = wish_id;
     }
+    public int getWishlist_id() {
+        return wishlist_id;
+    }
+
+    public void setWishlist_id(int wishlist_id) {
+        this.wishlist_id = wishlist_id;
+    }
 
     public String getWish_name() {
         return wish_name;
     }
 
     public void setWish_name(String name) {
-        this.wish_name = wish_name;
+        this.wish_name = name;
     }
 
-    public String getWishDescription() {
+    public String getWish_description() {
         return wish_description;
     }
 
-    public void setWishDescription(String description) {
-        this.wish_description = wish_description;
+    public void setWish_description(String description) {
+        this.wish_description = description;
     }
 
     public String getLink() {
@@ -48,11 +65,11 @@ public class Wish {
         this.link = link;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }
