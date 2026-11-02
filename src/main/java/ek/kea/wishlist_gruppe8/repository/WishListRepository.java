@@ -17,7 +17,7 @@ public class WishListRepository {
     }
 
     // UPDATE: updates a wish by ID
-    public Wish updateWish(int id, Wish updated) {
+    public Wish editWish(int id, Wish updated) {
         String sql = """
                 UPDATE wish
                 SET wish_name = ?,
@@ -44,7 +44,7 @@ public class WishListRepository {
     }
 
     // UPDATE: updates a wishlist by ID
-    public WishList updateWishList(int id, WishList updated) {
+    public WishList editWishList(int id, WishList updated) {
         String sql = """
                 UPDATE wishlist
                 SET wishlist_name = ?,
