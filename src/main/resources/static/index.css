@@ -1,0 +1,84 @@
+
+/* General page styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fffaf8;
+    color: #442735;
+}
+
+/* Header */
+header {
+    background-color: #ffffff;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f0e3e7;
+}
+
+header h1 {
+    font-family: Georgia, serif;
+    color: #803c55;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: #442735;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #a34f6c;
+}
+
+/* Home page welcome section */
+.welcome {
+    background-color: #f3dfe5;
+    margin: 40px;
+    padding: 60px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.welcome-text {
+    max-width: 500px;
+}
+
+.welcome-text h2 {
+    font-family: Georgia, serif;
+    font-size: 40px;
+    color: #442735;
+}
+
+.welcome-text p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.welcome-image {
+    font-size: 130px;
+}
+
+/* Buttons */
+.button {
+    display: inline-block;
+    background-color: #a34f6c;
+    color: white;
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 25px;
+    margin-right: 10px;
+}
+
+.button:hover {
+    background-color: #803c55;
+}

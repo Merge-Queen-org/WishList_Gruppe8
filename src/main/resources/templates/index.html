@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WishList - Home</title>
+  <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+
+<header>
+  <h1>♡ WishList</h1>
+
+  <nav>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/wishlist}">My Wishlists</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="welcome">
+
+    <div class="welcome-text">
+      <h2>Welcome to WishList!</h2>
+
+      <p>
+        Create, organize and keep track of all
+        the things you wish for.
+      </p>
+
+      <a th:href="@{/wishlist}" class="button">
+        My Wishlists
+      </a>
+
+      <a th:href="@{/wishlist/add}" class="button">
+        Create Wishlist
+      </a>
+    </div>
+
+    <div class="welcome-image">
+      🎁
+    </div>
+
+  </div>
+
+</main>
+
+</body>
+</html>
