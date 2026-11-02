@@ -15,7 +15,7 @@ public class WishListService {
         this.wishListRepository = wishListRepository;
     }
 
-    // Tjekker titel, laver et unikt share-token og gemmer
+    // Tjekker titel og gemmer
     public void createWishList(String title, String description) {
         if (title == null || title.isBlank()) {
             throw new IllegalArgumentException("Titel må ikke være tom");
@@ -23,22 +23,14 @@ public class WishListService {
 
         wishListRepository.save(new WishList(title, description));
     }
-}
-
-    private final WishListRepository wishRepository;
-
-    public WishListService(WishListRepository wishRepository) {
-        this.wishRepository = wishRepository;
-    }
 
     // UPDATE: updates a wish
     public Wish editWish(int id, Wish updated) {
-        return wishRepository.editWish(id, updated);
+        return wishListRepository.editWish(id, updated);
     }
 
     // UPDATE: updates a wishlist
     public WishList editWishList(int id, WishList updated) {
-        return wishRepository.editWishList(id, updated);
+        return wishListRepository.editWishList(id, updated);
     }
 }
-
