@@ -1,14 +1,16 @@
 package ek.kea.wishlist_gruppe8.model;
 
+import java.math.BigDecimal;
+
 public class Wish {
     private int wish_id;
     private String wish_name;
     private String wish_description;
     private String link;
-    private double price;
+    private BigDecimal price;
 
 
-    public Wish(int wish_id, String name, String description, String link, double price) {
+    public Wish(int wish_id, String name, String description, String link, BigDecimal price) {
         this.wish_id = wish_id;
         this.wish_name = name;
         this.wish_description = description;
@@ -48,11 +50,11 @@ public class Wish {
         this.link = link;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }
