@@ -1,26 +1,33 @@
 package ek.kea.wishlist_gruppe8.controller;
 
+
+import ek.kea.wishlist_gruppe8.model.Wish;
+import ek.kea.wishlist_gruppe8.model.WishList;
 import ek.kea.wishlist_gruppe8.service.WishListService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+@Controller
+public class WishListController {
+    private final WishListService wishListService;
 
-    @Controller
-    public class WishListController {
+    public WishListController(WishListService wishListService) { // constructor injection
+        this.wishListService = wishListService;
+    }
 
-        private final WishListService wishListService;
+    @PostMapping("/wishList/edit")
+    public String edit(@ModelAttribute WishList wishList) {
+        wishListService.editWishList(wishList.getWishList_id(), wishList);
+        return "redirect:/wishList";
+    }
 
-        public WishListController(WishListService wishListService) {
-            this.wishListService = wishListService;
-        }
-
-        // Viser formularen
-        @GetMapping("/wishlists/new")
-        public String showCreateForm() {
-            return "create-wishlist";
-        }
+    @PostMapping("/wish/edit")
+    public String edit(@ModelAttribute Wish wish) {
+        wishListService.editWish(wish.getWish_id(), wish);
+        return "redirect:/wish";
+    }
+}
 
         // Modtager formularen og gemmer
         @PostMapping("/wishlists")
