@@ -28,3 +28,12 @@ public class WishListController {
         return "redirect:/wish";
     }
 }
+
+        // Modtager formularen og gemmer
+        @PostMapping("/wishlists")
+        public String createWishList(@RequestParam String title,
+                                     @RequestParam(required = false) String description) {
+            wishListService.createWishList(title, description);
+            return "redirect:/wishlists/new";
+        }
+    }

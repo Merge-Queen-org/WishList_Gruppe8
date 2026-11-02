@@ -66,3 +66,10 @@ public class WishListRepository {
         return null;
     }
 }
+
+    // Gemmer en ny ønskeseddel i databasen
+    public void save(WishList wishList) {
+        String sql = "INSERT INTO wishlist (title, description) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, wishList.getTitle(), wishList.getDescription());
+    }
+}

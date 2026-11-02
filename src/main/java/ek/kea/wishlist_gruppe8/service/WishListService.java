@@ -9,6 +9,22 @@ import org.springframework.stereotype.Service;
 @Service
 public class WishListService {
 
+    private final WishListRepository wishListRepository;
+
+    public WishListService(WishListRepository wishListRepository) {
+        this.wishListRepository = wishListRepository;
+    }
+
+    // Tjekker titel, laver et unikt share-token og gemmer
+    public void createWishList(String title, String description) {
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("Titel må ikke være tom");
+        }
+
+        wishListRepository.save(new WishList(title, description));
+    }
+}
+
     private final WishListRepository wishRepository;
 
     public WishListService(WishListRepository wishRepository) {
