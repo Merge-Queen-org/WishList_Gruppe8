@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS wishlist_db;
+CREATE DATABASE wishlist_db;
+USE wishlist_db;
+ 
 CREATE TABLE wishlist (
     wishlist_id INT PRIMARY KEY AUTO_INCREMENT,
     wishlist_name VARCHAR(100) NOT NULL UNIQUE,
@@ -13,3 +17,5 @@ CREATE TABLE wish (
     link_url VARCHAR(1000),
     FOREIGN KEY (wishlist_id) REFERENCES wishlist(wishlist_id)
 );
+ 
+SHOW TABLES;
