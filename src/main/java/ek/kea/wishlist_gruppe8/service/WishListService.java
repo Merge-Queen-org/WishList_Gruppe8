@@ -19,7 +19,7 @@ public class WishListService {
         if (title == null || title.isBlank()) {
             throw new IllegalArgumentException("Titel må ikke være tom");
         }
-        String token = UUID.randomUUID().toString();
-        wishListRepository.save(new WishList(title, description, token));
+
+        wishListRepository.save(new WishList(title, description));
     }
 }

@@ -1,7 +1,6 @@
 package ek.kea.wishlist_gruppe8.repository;
 
 import ek.kea.wishlist_gruppe8.model.WishList;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -15,7 +14,7 @@ public class WishListRepository<JdbcTemplate> {
 
     // Gemmer en ny ønskeseddel i databasen
     public void save(WishList wishList) {
-        String sql = "INSERT INTO wishlist (title, description, share_token) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, wishList.getTitle(), wishList.getDescription(), wishList.getShareToken());
+        String sql = "INSERT INTO wishlist (title, description) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, wishList.getTitle(), wishList.getDescription());
     }
 }

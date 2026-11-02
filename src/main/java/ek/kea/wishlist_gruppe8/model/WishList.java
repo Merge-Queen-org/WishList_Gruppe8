@@ -4,12 +4,12 @@ public class WishList {
     private int id;
     private String title;
     private String description;
-    private String shareToken;
 
-    public WishList(String title, String description, String shareToken) {
+
+    public WishList(String title, String description) {
         this.title = title;
         this.description = description;
-        this.shareToken = shareToken;
+
     }
 
     public int getId() {
@@ -24,7 +24,6 @@ public class WishList {
         return description;
     }
 
-    public String getShareToken() {
-        return shareToken;
-    }
+
 }
+
