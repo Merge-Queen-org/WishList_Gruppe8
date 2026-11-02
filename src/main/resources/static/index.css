@@ -1,15 +1,16 @@
 
-/* General page styling */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #fffaf8;
+    background: linear-gradient(135deg, #fffaf8, #f8e9ed, #f3dfe5);
+    background-attachment: fixed;
     color: #442735;
+    min-height: 100vh;
 }
 
 /* Header */
 header {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 20px 50px;
     display: flex;
     justify-content: space-between;
@@ -39,13 +40,14 @@ nav a:hover {
 
 /* Home page welcome section */
 .welcome {
-    background-color: #f3dfe5;
+    background: linear-gradient(120deg, #f3dfe5, #ead0da);
     margin: 40px;
     padding: 60px;
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 8px 25px rgba(68, 39, 53, 0.08);
 }
 
 .welcome-text {
@@ -77,8 +79,39 @@ nav a:hover {
     padding: 13px 22px;
     border-radius: 25px;
     margin-right: 10px;
+    transition: 0.3s;
 }
 
 .button:hover {
     background-color: #803c55;
+    transform: translateY(-3px);
+}
+
+/* Responsive design */
+@media (max-width: 700px) {
+    header {
+        padding: 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .welcome {
+        margin: 20px;
+        padding: 30px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .welcome-text h2 {
+        font-size: 30px;
+    }
+
+    .welcome-image {
+        font-size: 90px;
+        margin-top: 25px;
+    }
+
+    .button {
+        margin: 5px;
+    }
 }

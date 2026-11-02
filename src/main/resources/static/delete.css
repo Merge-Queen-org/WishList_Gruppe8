@@ -1,14 +1,35 @@
-
-.wishlist-card label {
+.wishlist-container {
     display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    font-size: 18px;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.wishlist-card input {
-    width: 18px;
-    height: 18px;
-    accent-color: #a34f6c;
+.wishlist-card {
+    background-color: #f8f6f3;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.wishlist-card label {
+    cursor: pointer;
+}
+
+.button {
+    width: 100%;
+    padding: 12px;
+    background-color: #b94b4b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #803c55;
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
 }
