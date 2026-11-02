@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Wishlist</title>
+    <link rel="stylesheet" th:href="@{/css/wishlist.css}">
+</head>
+<body>
+
+<header>
+    <h1>♡ WishList</h1>
+    <a th:href="@{/wishlist}">My Wishlists</a>
+</header>
+
+<main>
+
+    <h2>Delete Wishlists</h2>
+    <p>Select the wishlists you want to delete.</p>
+
+    <form th:action="@{/wishlist/delete}" method="post">
+
+        <div class="wishlist-container">
+
+            <div class="wishlist-card"
+                 th:each="wishList : ${wishLists}">
+
+                <label>
+                    <input type="checkbox"
+                           name="wishListIds"
+                           th:value="${wishList.id}">
+
+                    <span th:text="${wishList.name}">Birthday</span>
+                </label>
+
+            </div>
+
+        </div>
+
+        <br>
+
+        <button type="submit">Delete selected</button>
+
+    </form>
+
+    <br>
+    <a th:href="@{/wishlist}">← Back to my wishlists</a>
+
+</main>
+
+</body>
+</html>
+
+<!-- Let's understand what happens here:
+- th:each loops through all the wishlists.
+- ${wishList.name} displays the wishlist name.
+- ${wishList.id} retrieves the ID of the current wishlist.
+- th:action dynamically creates the correct URL.
+- method="post" sends a POST request when the user clicks Delete. -->

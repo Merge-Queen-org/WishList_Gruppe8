@@ -64,5 +64,21 @@ public class WishListRepository {
         }
 
         return null;
+
+    }
+    // DELETE: deletes a wish
+    public boolean deleteWish(int wish_id) {
+        return jdbcTemplate.update(
+                "DELETE FROM wish WHERE wish_id = ?",
+                wish_id
+        ) > 0;
+    }
+
+    // DELETE: deletes a wishlist
+    public boolean deleteWishList(int wishList_id) {
+        return jdbcTemplate.update(
+                "DELETE FROM wishlist WHERE wishlist_id = ?",
+                wishList_id
+        ) > 0;
     }
 }
