@@ -5,6 +5,7 @@ import ek.kea.wishlist_gruppe8.model.Wish;
 import ek.kea.wishlist_gruppe8.model.WishList;
 import ek.kea.wishlist_gruppe8.service.WishListService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -14,6 +15,10 @@ public class WishListController {
 
     public WishListController(WishListService wishListService) { // constructor injection
         this.wishListService = wishListService;
+    }
+    @GetMapping("/")
+    public String welcome() {
+        return "index";
     }
 
     @PostMapping("/wishList/edit")
