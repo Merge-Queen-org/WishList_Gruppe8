@@ -1,5 +1,4 @@
-package ek.kea.wishlist_gruppe8;
-
+package ek.kea.wishlist_gruppe8.service;
 import ek.kea.wishlist_gruppe8.model.WishList;
 import ek.kea.wishlist_gruppe8.repository.WishListRepository;
 import org.springframework.stereotype.Service;
@@ -15,7 +14,7 @@ public class WishListService {
         this.wishListRepository = wishListRepository;
     }
 
-    // Tjekker titel  laver et unikt share-token og gemmer
+    // Tjekker titel, laver et unikt share-token og gemmer
     public void createWishList(String title, String description) {
         if (title == null || title.isBlank()) {
             throw new IllegalArgumentException("Titel må ikke være tom");
