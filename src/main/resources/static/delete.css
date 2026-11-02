@@ -1,0 +1,14 @@
+
+.wishlist-card label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.wishlist-card input {
+    width: 18px;
+    height: 18px;
+    accent-color: #a34f6c;
+}

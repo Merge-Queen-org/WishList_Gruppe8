@@ -10,6 +10,14 @@ public class WishList {
     private List<Wish> wishes;
 
 
+    public WishList() {
+    }
+
+    public WishList(String wishList_name, String wishList_description) {
+        this.wishList_name = wishList_name;
+        this.wishList_description = wishList_description;
+    }
+
     public WishList(int wishList_id, String wishList_name, String wishList_description, List<Wish> wishes) {
         this.wishList_id = wishList_id;
         this.wishList_name = wishList_name;
