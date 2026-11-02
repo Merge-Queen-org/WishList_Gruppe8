@@ -73,6 +73,10 @@ public class WishListRepository {
                 wish_id
         ) > 0;
     }
+    /*The > 0 checks whether at least one row was affected.
+Therefore:
+- If the result is greater than 0 → true.
+- If the result is 0 → false.*/
 
     // DELETE: deletes a wishlist
     public boolean deleteWishList(int wishList_id) {
