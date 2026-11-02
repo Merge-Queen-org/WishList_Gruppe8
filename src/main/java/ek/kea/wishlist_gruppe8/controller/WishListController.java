@@ -33,8 +33,13 @@ public class WishListController {
         return "redirect:/wishlist";
     }
 //@PathVariable and @ModelAttribute determine how Spring receives data.
-@PostMapping("/wishlist/delete")
-public String deleteWishLists(@RequestParam List<Integer> wishListIds) {
+    @PostMapping("/wishlist/delete")
+    public String deleteWishLists(@RequestParam List<Integer> wishListIds) {
+            for (int id : wishListIds) {
+            wishListService.deleteWishList(id);
+    }
+    return "redirect:/wishlist";
+}
 
     // Modtager formularen og gemmer
     @PostMapping("/wishlists")
@@ -44,17 +49,10 @@ public String deleteWishLists(@RequestParam List<Integer> wishListIds) {
         return "redirect:/wishlists/new";
     }
 }
-
-    for (int id : wishListIds) {
-        wishListService.deleteWishList(id);
-    }
-            return "redirect:/wishlist";
-        }
-    }    // Modtager formularen og gemmer
+    // Modtager formularen og gemmer
         @PostMapping("/wishlists")
         public String createWishList(@RequestParam String title,
                                      @RequestParam(required = false) String description) {
             wishListService.createWishList(title, description);
             return "redirect:/wishlists/new";
         }
-    }
