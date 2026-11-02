@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WishList - Home</title>
-  <link rel="stylesheet" th:href="@{/static/index.css}">
+  <title>WishList-Home</title>
+  <link rel="stylesheet" th:href="@{/index.css}">
 </head>
 <body>
 
@@ -14,7 +14,7 @@
 
   <nav>
     <a th:href="@{/}">Home</a>
-    <a th:href="@{/wishlist}">My Wishlists</a>
+    <a th:href="@{/index}">My Wishlists</a>
   </nav>
 </header>
 
@@ -30,11 +30,11 @@
         the things you wish for.
       </p>
 
-      <a th:href="@{/wishlist}" class="button">
+      <a th:href="@{/index}" class="button">
         My Wishlists
       </a>
 
-      <a th:href="@{/wishlist/add}" class="button">
+      <a th:href="@{/index/add}" class="button">
         Create Wishlist
       </a>
     </div>

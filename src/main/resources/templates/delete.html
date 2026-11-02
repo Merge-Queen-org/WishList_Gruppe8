@@ -1,10 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Delete Wishlist</title>
-    <link rel="stylesheet" th:href="@{/css/wishlist.css}">
+    <link rel="stylesheet" th:href="@{/index.css}">
+    <link rel="stylesheet" th:href="@{/delete.css}">
 </head>
 <body>
 
@@ -13,7 +13,7 @@
     <a th:href="@{/wishlist}">My Wishlists</a>
 </header>
 
-<main>
+<main class="delete-main">
 
     <h2>Delete Wishlists</h2>
     <p>Select the wishlists you want to delete.</p>
@@ -37,14 +37,11 @@
 
         </div>
 
-        <br>
-
-        <button type="submit">Delete selected</button>
+        <button type="submit" class="button">Delete selected</button>
 
     </form>
 
-    <br>
-    <a th:href="@{/wishlist}">← Back to my wishlists</a>
+    <a class="back-link" th:href="@{/wishlist}">← Back to my wishlists</a>
 
 </main>
 
