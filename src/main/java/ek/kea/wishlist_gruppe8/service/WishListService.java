@@ -16,13 +16,13 @@ public class WishListService {
     }
 
     // UPDATE: updates a wish
-    public Wish updateWish(int id, Wish updated) {
-        return wishRepository.updateWish(id, updated);
+    public Wish editWish(int id, Wish updated) {
+        return wishRepository.editWish(id, updated);
     }
 
     // UPDATE: updates a wishlist
-    public WishList updateWishList(int id, WishList updated) {
-        return wishRepository.updateWishList(id, updated);
+    public WishList editWishList(int id, WishList updated) {
+        return wishRepository.editWishList(id, updated);
     }
 }
 
