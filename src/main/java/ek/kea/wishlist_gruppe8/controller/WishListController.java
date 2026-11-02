@@ -16,15 +16,15 @@ public class WishListController {
         this.wishListService = wishListService;
     }
 
-    @PostMapping("/wishList/update")
-    public String update(@ModelAttribute WishList wishList) {
-        wishListService.updateWishList(wishList.getWishList_id(), wishList);
-        return "redirect:/attractions";
+    @PostMapping("/wishList/edit")
+    public String edit(@ModelAttribute WishList wishList) {
+        wishListService.editWishList(wishList.getWishList_id(), wishList);
+        return "redirect:/wishList";
     }
 
-    @PostMapping("/wish/update")
-    public String update(@ModelAttribute Wish wish) {
-        wishListService.updateWish(wish.getWish_id(), wish);
-        return "redirect:/attractions";
+    @PostMapping("/wish/edit")
+    public String edit(@ModelAttribute Wish wish) {
+        wishListService.editWish(wish.getWish_id(), wish);
+        return "redirect:/wish";
     }
 }
