@@ -27,12 +27,16 @@ public class WishListController {
     public String update(@ModelAttribute WishList wishList) {
         wishListService.updateWishList(wishList.getWishList_id(), wishList);
         return "redirect:/attractions";
+    @PostMapping("/wishList/edit")
+    public String edit(@ModelAttribute WishList wishList) {
+        wishListService.editWishList(wishList.getWishList_id(), wishList);
+        return "redirect:/wishList";
     }
 
-    @PostMapping("/wish/update")
-    public String update(@ModelAttribute Wish wish) {
-        wishListService.updateWish(wish.getWish_id(), wish);
-        return "redirect:/attractions";
+    @PostMapping("/wish/edit")
+    public String edit(@ModelAttribute Wish wish) {
+        wishListService.editWish(wish.getWish_id(), wish);
+        return "redirect:/wish";
     }
     @PostMapping("/wish/delete/{wish_id}")
     public String deleteWish(@PathVariable int wish_id) {
@@ -46,9 +50,13 @@ public String deleteWishLists(@RequestParam List<Integer> wishListIds) {
     for (int id : wishListIds) {
         wishListService.deleteWishList(id);
     }
-
-    return "redirect:/wishlist";
-}
-}
-
-
+            return "redirect:/wishlist";
+        }
+    }    // Modtager formularen og gemmer
+        @PostMapping("/wishlists")
+        public String createWishList(@RequestParam String title,
+                                     @RequestParam(required = false) String description) {
+            wishListService.createWishList(title, description);
+            return "redirect:/wishlists/new";
+        }
+    }

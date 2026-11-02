@@ -16,7 +16,7 @@ public class WishListRepository {
     }
 
     // UPDATE: updates a wish by ID
-    public Wish updateWish(int id, Wish updated) {
+    public Wish editWish(int id, Wish updated) {
         String sql = """
                 UPDATE wish
                 SET wish_name = ?,
@@ -43,7 +43,7 @@ public class WishListRepository {
     }
 
     // UPDATE: updates a wishlist by ID
-    public WishList updateWishList(int id, WishList updated) {
+    public WishList editWishList(int id, WishList updated) {
         String sql = """
                 UPDATE wishlist
                 SET wishlist_name = ?,
@@ -84,5 +84,12 @@ Therefore:
                 "DELETE FROM wishlist WHERE wishlist_id = ?",
                 wishList_id
         ) > 0;
+    }
+}
+
+    // Gemmer en ny ønskeseddel i databasen
+    public void save(WishList wishList) {
+        String sql = "INSERT INTO wishlist (title, description) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, wishList.getTitle(), wishList.getDescription());
     }
 }
