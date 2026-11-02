@@ -5,6 +5,7 @@ import ek.kea.wishlist_gruppe8.model.Wish;
 import ek.kea.wishlist_gruppe8.model.WishList;
 import ek.kea.wishlist_gruppe8.service.WishListService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,14 @@ public class WishListController {
     @GetMapping("/")
     public String welcome() {
         return "index";
+    }
+
+    @GetMapping("/wishlist/{id}")
+    public String getWishlistById (@PathVariable int id, Model model){
+        WishList wishList = wishListService.getWishListById(id);
+        if (wishList == null) return "redirect:/";
+        model.addAttribute("wishList", wishList);
+        return "wishlist";
     }
 
     @PostMapping("/wishList/edit")
