@@ -15,6 +15,12 @@ public class WishListRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    // Gemmer en ny ønskeseddel i databasen
+    public void save(WishList wishList) {
+        String sql = "INSERT INTO wishlist (wishlist_name, description) VALUES (?, ?)";
+        jdbcTemplate.update(sql, wishList.getWishList_name(), wishList.getWishList_description());
+    }
+
     // UPDATE: updates a wish by ID
     public Wish editWish(int id, Wish updated) {
         String sql = """
@@ -55,7 +61,6 @@ public class WishListRepository {
                 sql,
                 updated.getWishList_name(),
                 updated.getWishList_description(),
-                updated.getShareToken(),
                 id
         );
 
@@ -64,12 +69,5 @@ public class WishListRepository {
         }
 
         return null;
-    }
-}
-
-    // Gemmer en ny ønskeseddel i databasen
-    public void save(WishList wishList) {
-        String sql = "INSERT INTO wishlist (title, description) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, wishList.getTitle(), wishList.getDescription());
     }
 }
