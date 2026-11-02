@@ -38,11 +38,11 @@ public class WishListService {
     //The service receives the request from the controller and calls the repository.
     public boolean deleteWish(int wish_id ){
 
-        return wishRepository.deleteWish(wish_id);
+        return wishListRepository.deleteWish(wish_id);
     }
 
     // DELETE a wishlist
     public boolean deleteWishList(int wishList_id) {
-        return wishRepository.deleteWishList(wishList_id);
+        return wishListRepository.deleteWishList(wishList_id);
     }
 }
