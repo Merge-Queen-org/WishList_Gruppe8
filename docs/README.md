@@ -2,70 +2,47 @@
 
 ## Om projektet
 
-WishList er en webbaseret applikation, hvor brugere kan oprette og administrere digitale ønskelister. Formålet er at gøre det nemmere at samle sine ønsker ét sted og holde styr på information om hvert ønske.
+WishList er en webapplikation, hvor brugere kan oprette og administrere ønskelister.
 
-Applikationen giver mulighed for at oprette, redigere og slette ønskelister og ønsker. Et ønske kan blandt andet indeholde navn, beskrivelse, pris og et link til produktet.
+Man kan oprette, redigere og slette ønskelister og ønsker. Hvert ønske kan indeholde navn, beskrivelse, pris og et produktlink.
 
 ## Teknologier
 
-Projektet er udviklet med følgende teknologier:
+Projektet bruger:
 
-- **Java 25** – Programmeringssprog.
-- **Spring Boot 4.1.1** – Backend-framework.
-- **Spring MVC** – Håndtering af HTTP-requests og controllers.
-- **Thymeleaf** – Dynamisk generering af HTML-sider.
-- **Spring JDBC / JdbcTemplate** – Kommunikation mellem applikationen og databasen.
-- **MySQL** – Relationel database.
-- **HTML og CSS** – Applikationens brugergrænseflade.
-- **Maven** – Håndtering af dependencies og projektets build.
+- Java 25
+- Spring Boot
+- Thymeleaf
+- MySQL
+- HTML og CSS
+- Maven
 
-## Softwaremæssige forudsætninger
+## Forudsætninger
 
-For at kunne køre applikationen lokalt skal følgende være installeret:
+For at køre applikationen skal du have installeret:
 
-- Java Development Kit (JDK) 25.
-- Maven.
-- MySQL Server.
-- En IDE, eksempelvis IntelliJ IDEA.
-- Git til at hente projektet fra GitHub.
+- Java JDK 25
+- MySQL
+- IntelliJ IDEA (eller en anden Java IDE)
+- Git
 
-## Installation og opstart
+## Sådan starter du applikationen
 
-1. Klon projektet fra GitHub:
-
-   ```bash
-   git clone [INDSÆT GITHUB-REPOSITORY-LINK]
-   ```
-
-2. Åbn projektet i IntelliJ IDEA.
-
-3. Opret en MySQL-database med navnet `wishlist_db`.
-
-4. Kontrollér databaseforbindelsen i `application-dev.properties` eller den relevante konfigurationsfil. Indstil database-URL, brugernavn og adgangskode.
-
-5. Åbn projektet og vent på, at Maven har hentet alle dependencies.
-
-6. Start applikationen ved at køre `WishListGruppe8Application.java`.
-
-7. Åbn applikationen i browseren:
-
-   http://localhost:8080
-
-## Database
-
-Applikationen anvender en MySQL-database med følgende centrale tabeller:
-
-- **wishlist** – Indeholder information om ønskelister.
-- **wish** – Indeholder de enkelte ønsker, som er knyttet til en ønskeliste.
-
-Tabellen `wish` har en fremmednøgle, der refererer til `wishlist`.
+1. Klon projektet fra GitHub.
+2. Åbn projektet i IntelliJ.
+3. Opret databasen `wishlist_db` i MySQL.
+4. Kontrollér databaseindstillingerne i konfigurationsfilen.
+5. Start `WishListGruppe8Application.java`.
+6. Åbn http://localhost:8080 i din browser.
 
 ## Kørende applikation
 
-Link til den deployede applikation:
-
-[INDSÆT LINK TIL DEN KØRENDE APPLIKATION]
+Link: 
 
 ## Projektgruppe
 
-Udviklet som en del af Datamatikeruddannelsen på Erhvervsakademi København (EK).
+Projektet er udviklet som en del af Datamatikeruddannelsen på Erhvervsakademi København (EK).
+
+## Bidrag til projektet
+
+Læs [CONTRIBUTING.md](CONTRIBUTING.md), hvis du vil vide, hvordan du kan bidrage til projektet.
