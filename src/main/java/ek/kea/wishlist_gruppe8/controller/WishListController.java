@@ -83,14 +83,17 @@ public class WishListController {
         wishListService.deleteWish(wish_id);
         return "redirect:/wishlist/" + wishlistId; // stay on the same wishlist page
     }
-
+    //Responds when the user visits /wishlist/delete.
+    @GetMapping("/wishlist/delete")
+    public String showDeletePage(Model model) {
+        model.addAttribute("wishLists", wishListService.getAllWishLists());
+        return "delete";
+    }
     //@PathVariable and @ModelAttribute determine how Spring receives data.
-    @PostMapping("/wishlist/delete")
-    public String deleteWishLists(@RequestParam List<Integer> wishListIds) {
-        for (int id : wishListIds) {
+    @PostMapping("/wishlist/delete/{id}")
+    public String deleteWishLists(@PathVariable int id) {
             wishListService.deleteWishList(id);
-        }
-        return "redirect:/wishlist";
+        return "redirect:/index";
     }
 
 

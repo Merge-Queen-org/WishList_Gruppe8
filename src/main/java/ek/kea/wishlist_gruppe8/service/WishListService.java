@@ -6,6 +6,7 @@ import ek.kea.wishlist_gruppe8.model.WishList;
 import ek.kea.wishlist_gruppe8.repository.WishListRepository;
 import ek.kea.wishlist_gruppe8.repository.WishRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -46,11 +47,15 @@ public class WishListService {
         return wishListRepository.deleteWish(wish_id);
     }
 
-    // DELETE a wishlist
+    // DELETE a wishlist @Transactional is important because you are performing
+    // two database operations that belong together when deleting a wishlist.
+    @Transactional
     public boolean deleteWishList(int wishList_id) {
         return wishListRepository.deleteWishList(wishList_id);
     }
-
+/*it as an agreement:
+- If everything succeeds → COMMIT (save the changes).
+- If something fails → ROLLBACK (undo the changes).*/
     public List<Wish> getWishesByWishlistId(int wishlist_id) {
         return wishRepository.getWishesByWishlistId(wishlist_id);
     }
