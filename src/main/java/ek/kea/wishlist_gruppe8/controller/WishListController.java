@@ -33,6 +33,20 @@ public class WishListController {
         model.addAttribute("wishList", wishList);
         return "wishlist";
     }
+    @GetMapping("/wishlist/{id}/wish/new")
+    public String addNewWish(@PathVariable int id, Model model){
+        WishList wishList = wishListService.getWishListById(id);
+        if (wishList == null) return "redirect:/"; //if the wishlist id doesn’t exist, send the user to the front page instead of crashing
+       model.addAttribute("wishList",wishList);
+       model.addAttribute("wish", new Wish()); //gives the form an empty wish to fill in
+       return "wish-form";
+    }
+
+    @PostMapping("/wishlist/{id}/wishes")
+    public String saveWishes (@PathVariable int id, @ModelAttribute Wish wish){
+        wishListService.saveNewWish(id,wish);
+        return "redirect:/wishlist/" + id;
+    }
 
     @PostMapping("/wishList/edit/{wishList_id}")
     public String editWishList(@PathVariable int wishList_id, @ModelAttribute WishList wishList) {

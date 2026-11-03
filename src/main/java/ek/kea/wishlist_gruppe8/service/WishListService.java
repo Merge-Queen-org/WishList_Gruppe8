@@ -41,7 +41,7 @@ public class WishListService {
 
     // DELETE a wish
     //The service receives the request from the controller and calls the repository.
-    public boolean deleteWish(int wish_id ){
+    public boolean deleteWish(int wish_id) {
 
         return wishListRepository.deleteWish(wish_id);
     }
@@ -51,11 +51,20 @@ public class WishListService {
         return wishListRepository.deleteWishList(wishList_id);
     }
 
-    public List<Wish> getWishesByWishlistId(int wishlist_id){
+    public List<Wish> getWishesByWishlistId(int wishlist_id) {
         return wishRepository.getWishesByWishlistId(wishlist_id);
     }
 
-    public WishList getWishListById(int id){
+    public WishList getWishListById(int id) {
         return wishListRepository.getWishListById(id);
     }
+
+    public void saveNewWish(int wishlist_id, Wish wish) {
+        if (wish.getWish_name() == null || wish.getWish_name().isBlank()) {
+            throw new IllegalArgumentException("Wish name must not be empty");
+        }
+        wish.setWishlist_id(wishlist_id);
+        wishRepository.saveNewWish(wish);
+    }
+
 }
