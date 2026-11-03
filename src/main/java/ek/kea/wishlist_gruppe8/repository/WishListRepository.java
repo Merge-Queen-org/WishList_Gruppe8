@@ -11,9 +11,11 @@ import java.util.List;
 public class WishListRepository {
 
     private final JdbcTemplate jdbcTemplate;
+    private final WishRepository wishRepository;
 
-    public WishListRepository(JdbcTemplate jdbcTemplate) {
+    public WishListRepository(JdbcTemplate jdbcTemplate, WishRepository wishRepository) {
         this.jdbcTemplate = jdbcTemplate;
+        this.wishRepository = wishRepository;
     }
 
     // Gemmer en ny ønskeseddel i databasen
@@ -104,22 +106,7 @@ Therefore:
                 rs.getString("description"), null),id);
         if (result.isEmpty()) return  null;  //fetch the wishlist, then fetch its wishes.
         WishList list = result.get(0);       // It avoids running a query inside a row mapper.
-        list.setWishes(getWishesByWishlistId(id));
+        list.setWishes(wishRepository.getWishesByWishlistId(id));
         return list;
-    }
-
-    public List<Wish> getWishesByWishlistId (int wishlist_id){
-        String sql = """
-                SELECT wish_id, wishlist_id, wish_name, description, link_url, price
-                FROM wish
-                WHERE wishlist_id = ?
-                """;
-        return jdbcTemplate.query(sql, (rs, rowNum) -> new Wish(
-                rs.getInt("wish_id"),
-                rs.getInt("wishlist_id"),
-                rs.getString("wish_name"),
-                rs.getString("description"),
-                rs.getString("link_url"),
-                rs.getBigDecimal("price")), wishlist_id);
     }
 }

@@ -4,6 +4,7 @@ package ek.kea.wishlist_gruppe8.service;
 import ek.kea.wishlist_gruppe8.model.Wish;
 import ek.kea.wishlist_gruppe8.model.WishList;
 import ek.kea.wishlist_gruppe8.repository.WishListRepository;
+import ek.kea.wishlist_gruppe8.repository.WishRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +13,11 @@ import java.util.List;
 public class WishListService {
 
     private final WishListRepository wishListRepository;
+    private final WishRepository wishRepository;
 
-    public WishListService(WishListRepository wishListRepository) {
+    public WishListService(WishListRepository wishListRepository, WishRepository wishRepository) {
         this.wishListRepository = wishListRepository;
+        this.wishRepository = wishRepository;
     }
 
     // Tjekker titel og gemmer
@@ -38,7 +41,7 @@ public class WishListService {
 
     // DELETE a wish
     //The service receives the request from the controller and calls the repository.
-    public boolean deleteWish(int wish_id ){
+    public boolean deleteWish(int wish_id) {
 
         return wishListRepository.deleteWish(wish_id);
     }
@@ -48,11 +51,20 @@ public class WishListService {
         return wishListRepository.deleteWishList(wishList_id);
     }
 
-    public List<Wish> getWishesByWishlistId(int wishlist_id){
-        return wishListRepository.getWishesByWishlistId(wishlist_id);
+    public List<Wish> getWishesByWishlistId(int wishlist_id) {
+        return wishRepository.getWishesByWishlistId(wishlist_id);
     }
 
-    public WishList getWishListById(int id){
+    public WishList getWishListById(int id) {
         return wishListRepository.getWishListById(id);
     }
+
+    public void saveNewWish(int wishlist_id, Wish wish) {
+        if (wish.getWish_name() == null || wish.getWish_name().isBlank()) {
+            throw new IllegalArgumentException("Wish name must not be empty");
+        }
+        wish.setWishlist_id(wishlist_id);
+        wishRepository.saveNewWish(wish);
+    }
+
 }

@@ -26,6 +26,10 @@ public class Wish {
         this.price = price;
     }
 
+    public Wish() {
+
+    }
+
     public int getWish_id() {
         return wish_id;
     }
