@@ -2,7 +2,9 @@ package ek.kea.wishlist_gruppe8.repository;
 
 import ek.kea.wishlist_gruppe8.model.Wish;
 import ek.kea.wishlist_gruppe8.model.WishList;
+import ek.kea.wishlist_gruppe8.model.WishListRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -16,6 +18,10 @@ public class WishListRepository {
 
     private final JdbcTemplate jdbcTemplate;
     private final WishRepository wishRepository;
+/*You create an instance of WishListRowMapper inside your
+WishListRepository because the repository needs a RowMapper object to convert database rows
+ into Java objects when you execute a SELECT query.*/
+    private final RowMapper<WishList> rowMapper = new WishListRowMapper();
 
     public WishListRepository(JdbcTemplate jdbcTemplate, WishRepository wishRepository) {
         this.jdbcTemplate = jdbcTemplate;
@@ -111,13 +117,19 @@ Therefore:
                 FROM wishlist
                 WHERE wishlist_id = ?
                 """;
-        List<WishList> result = jdbcTemplate.query(sql,(rs,rowNum) -> new WishList (
+        /*Here you are creating another RowMapper using a lambda expression.
+But you already created a separate class called WishListRowMapper.
+You can replace that code with:
+List<WishList> result = jdbcTemplate.query(sql, rowMapper, id);
+Much cleaner!*/
+        List<WishList> result = jdbcTemplate.query(sql, rowMapper, id);
+      /*  List<WishList> result = jdbcTemplate.query(sql,(rs,rowNum) -> new WishList (
                 rs.getInt("wishlist_id"),
                 rs.getString("wishlist_name"),
-                rs.getString("description"), null),id);
+                rs.getString("description"), null),id);*/
         if (result.isEmpty()) return  null;  //fetch the wishlist, then fetch its wishes.
         WishList list = result.get(0);       // It avoids running a query inside a row mapper.
-        list.setWishes(wishRepository.getWishesByWishlistId(id));
+        list.setWishes(wishRepository.getWishesByWishlistId(id)); //separately retrieve all wishes belonging to that wishlist.
         return list;
     }
 }
