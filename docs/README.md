@@ -6,9 +6,13 @@ WishList er en webapplikation, hvor brugere kan oprette og administrere ønskeli
 
 Man kan oprette, redigere og slette ønskelister og ønsker. Hvert ønske kan indeholde navn, beskrivelse, pris og et produktlink.
 
-## Teknologier
+## Gruppe 
+- Nadira
+- Kwan
+- Jenny
+- Celine
 
-Projektet bruger:
+## Teknologier
 
 - Java 25
 - Spring Boot
@@ -16,15 +20,14 @@ Projektet bruger:
 - MySQL
 - HTML og CSS
 - Maven
+- GitHub Projects
 
-## Forudsætninger
-
-For at køre applikationen skal du have installeret:
-
-- Java JDK 25
-- MySQL
-- IntelliJ IDEA (eller en anden Java IDE)
-- Git
+## Funktioner
+- Vis WishList/Wish
+- Opret WishList/Wish
+- Rediger WishList/Wish
+- Slet WishList/Wish
+  
 
 ## Sådan starter du applikationen
 
@@ -35,14 +38,10 @@ For at køre applikationen skal du have installeret:
 5. Start `WishListGruppe8Application.java`.
 6. Åbn http://localhost:8080 i din browser.
 
-## Kørende applikation
+## Projektstyring
+User stories og tasks findes i GitHub Projects.
 
-Link: 
 
-## Projektgruppe
-
-Projektet er udviklet som en del af Datamatikeruddannelsen på Erhvervsakademi København (EK).
-
-## Bidrag til projektet
+## Contributing
 
 Læs [CONTRIBUTING.md](CONTRIBUTING.md), hvis du vil vide, hvordan du kan bidrage til projektet.
