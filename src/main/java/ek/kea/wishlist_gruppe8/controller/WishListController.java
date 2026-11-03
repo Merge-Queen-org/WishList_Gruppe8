@@ -45,9 +45,17 @@ public class WishListController {
     }
 
     @PostMapping("/wishlist/{id}/wishes")
-    public String saveWishes (@PathVariable int id, @ModelAttribute Wish wish){
-        wishListService.saveNewWish(id,wish);
-        return "redirect:/wishlist/" + id;
+    public String saveWishes (@PathVariable int id, @ModelAttribute Wish wish, Model model){
+        try {
+            wishListService.saveNewWish(id,wish);
+            return "redirect:/wishlist/" + id;
+        } catch (IllegalArgumentException e) { // wish name is empty
+            WishList wishList = wishListService.getWishListById(id);
+            if (wishList == null) return "redirect:/";
+            model.addAttribute("wishList", wishList);
+            model.addAttribute("error", e.getMessage());
+            return "wish-form"; // show the form again with the error and what the user typed
+        }
     }
     @GetMapping("/wishlist/edit/{id}")
     public String showEditForm(@PathVariable int id, Model model) {
@@ -62,10 +70,20 @@ public class WishListController {
         return "redirect:/wishList";
     }
 
+    @GetMapping("/wish/edit/{wish_id}")
+    public String showEditWishForm(@PathVariable int wish_id, Model model) {
+        Wish wish = wishListService.getWishById(wish_id);
+        if (wish == null) return "redirect:/";
+        model.addAttribute("wish", wish);
+        return "edit-wish";
+    }
+
     @PostMapping("/wish/edit/{wish_id}")
     public String editWish(@PathVariable int wish_id, @ModelAttribute Wish wish) {
+        Wish existing = wishListService.getWishById(wish_id);
+        if (existing == null) return "redirect:/";
         wishListService.editWish(wish_id, wish);
-        return "redirect:/wish";
+        return "redirect:/wishlist/" + existing.getWishlist_id();
     }
 
     @PostMapping("/wish/delete/{wish_id}")

@@ -19,6 +19,8 @@
 <main class="create-page">
     <h2>Add a wish</h2>
 
+    <p class="error" th:if="${error}" th:text="${error}">Error</p>
+
     <form class="form-card" th:action="@{/wishlist/{id}/wishes(id=${wishList.wishList_id})}" th:object="${wish}" method="post">
         <label for="wish_name">Name</label>
         <input type="text" id="wish_name" th:field="*{wish_name}" required>
