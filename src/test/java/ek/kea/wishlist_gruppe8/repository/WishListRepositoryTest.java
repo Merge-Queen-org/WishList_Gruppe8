@@ -26,6 +26,14 @@ public class WishListRepositoryTest {
     }
 
     @Test
+    void save(){
+        int id = repo.save(new WishList("Jul", "Julegaver")); // gem ny ønskeseddel
+        WishList list = repo.getWishListById(id);           // hent den igen
+        assertThat(list.getWishList_name()).isEqualTo("Jul");
+        assertThat(list.getWishList_description()).isEqualTo("Julegaver");
+    }
+
+    @Test
     void getWishListById_notFound(){
         assertThat(repo.getWishListById(999)).isNull();
     }
