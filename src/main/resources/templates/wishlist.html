@@ -1,11 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
- <h2>HIII</h2>
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wishlist</title>
+    <link rel="stylesheet" th:href="@{/index.css}">
 
-</body>
+</head>
+    <body>
+        <header>
+            <h1> ♡ WishList</h1>
+                <nav>
+                    <a th:href="@{/}">Home</a>
+                    <a th:href="@{/index}">My Wishlists</a>
+                </nav>
+        </header>
+        <main>
+
+        </main>
+
+    <footer>
+        <div class="">
+            <p class="footer-copy">Copyrights &copy; 2026 All Rights Reserved by WishList</p>
+        </div>
+    </footer>
+
+    </body>
 </html>
