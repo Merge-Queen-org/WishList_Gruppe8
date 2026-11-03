@@ -77,9 +77,9 @@ public class WishListController {
     }
 
     @PostMapping("/wish/delete/{wish_id}")
-    public String deleteWish(@PathVariable int wish_id) {
+    public String deleteWish(@PathVariable int wish_id, @RequestParam int wishlistId) {
         wishListService.deleteWish(wish_id);
-        return "redirect:/wishlist";
+        return "redirect:/wishlist/" + wishlistId; // stay on the same wishlist page
     }
 
     //@PathVariable and @ModelAttribute determine how Spring receives data.

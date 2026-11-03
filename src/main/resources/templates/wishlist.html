@@ -40,6 +40,7 @@
                 <div class="buttons">
                     <a class="btn-save" th:href="@{/wish/edit/{wish_id}(wish_id=${wish.wish_id})}">Edit</a>
                     <form th:action="@{/wish/delete/{wish_id}(wish_id=${wish.wish_id})}" method="post">
+                        <input type="hidden" name="wishlistId" th:value="${wishList.wishList_id}">
                         <button class="btn-cancel" type="submit">Delete</button>
                     </form>
                 </div>
