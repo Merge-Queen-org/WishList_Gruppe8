@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="da" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opret ønskeseddel</title>
+    <link rel="stylesheet" th:href="@{/create.css}">
+</head>
+<body>
+
+<main class="create-page">
+    <h2>Ny ønskeseddel</h2>
+
+    <form class="form-card" th:action="@{/create/add}" method="post">
+        <label for="title">Titel</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="description">Beskrivelse (valgfri)</label>
+        <textarea id="description" name="description"></textarea>
+
+        <div class="form-buttons">
+            <button type="submit" class="btn-save">Gem</button>
+            <a th:href="@{/}" class="btn-cancel">Annuller</a>
+        </div>
+    </form>
+</main>
+
+</body>
+</html>

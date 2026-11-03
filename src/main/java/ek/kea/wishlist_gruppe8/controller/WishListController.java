@@ -21,13 +21,14 @@ public class WishListController {
     public WishListController(WishListService wishListService) { // constructor injection
         this.wishListService = wishListService;
     }
+
     @GetMapping("/")
     public String welcome() {
         return "index";
     }
 
     @GetMapping("/wishlist/{id}")
-    public String getWishlistById (@PathVariable int id, Model model){
+    public String getWishlistById(@PathVariable int id, Model model) {
         WishList wishList = wishListService.getWishListById(id);
         if (wishList == null) return "redirect:/";
         model.addAttribute("wishList", wishList);
@@ -61,29 +62,39 @@ public class WishListController {
     }
 
     @PostMapping("/wish/edit/{wish_id}")
-    public String editWish(@PathVariable int wish_id,@ModelAttribute Wish wish) {
+    public String editWish(@PathVariable int wish_id, @ModelAttribute Wish wish) {
         wishListService.editWish(wish_id, wish);
         return "redirect:/wish";
     }
+
     @PostMapping("/wish/delete/{wish_id}")
     public String deleteWish(@PathVariable int wish_id) {
         wishListService.deleteWish(wish_id);
         return "redirect:/wishlist";
     }
-//@PathVariable and @ModelAttribute determine how Spring receives data.
+
+    //@PathVariable and @ModelAttribute determine how Spring receives data.
     @PostMapping("/wishlist/delete")
     public String deleteWishLists(@RequestParam List<Integer> wishListIds) {
-            for (int id : wishListIds) {
+        for (int id : wishListIds) {
             wishListService.deleteWishList(id);
+        }
+        return "redirect:/wishlist";
     }
-    return "redirect:/wishlist";
+
+
+    @GetMapping("/create")
+    public String showCreate() {
+        return "createWishList"; // skal hedde det samme som HTML-filen (uden .html)
+    }
+
+    // Modtager formularen når man trykker Gem
+    @PostMapping("/create/add")
+    public String addWishlist(@RequestParam String title,
+                              @RequestParam(required = false) String description) {
+        // gem i databasen via service/repository
+        return "redirect:/index";
+    }
+
 }
 
-    // Modtager formularen og gemmer
-    @PostMapping("/wishlists")
-    public String createWishList(@RequestParam String title,
-                                 @RequestParam(required = false) String description) {
-        wishListService.createWishList(title, description);
-        return "redirect:/wishlists/new";
-    }
-}
