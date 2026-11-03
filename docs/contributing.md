@@ -1,8 +1,9 @@
-# CONTRIBUTING
+# CONTRIBUTING til WishList
 
+Tak fordi du vil bidrage til WishList-projektet!
 Her kan du læse, hvordan du kommer i gang med udviklingen.
 
-## Kom i gang
+## Kom godt i gang
 
 1. Klon projektet fra GitHub.
 2. Åbn projektet i IntelliJ.
@@ -21,7 +22,7 @@ Projektet er opdelt i følgende mapper:
 - **templates:** Indeholder HTML-sider.
 - **static:** Indeholder CSS-filer.
 
-## Git og samarbejde
+## Arbejdsproces
 
 Når du arbejder på en ny funktion:
 
@@ -38,11 +39,15 @@ Vi bruger følgende branch-navne:
   
 `deploy`-branchen bruges som udgangspunkt for nye branches og samler godkendte ændringer.
 
-## Retningslinjer
+## Coding Standards
 
 - Skriv tydelig og læsbar kode.
 - Brug beskrivende navne til klasser og metoder.
 - Følg projektets eksisterende struktur.
 - Test dine ændringer, før du laver en Pull Request.
 - Upload aldrig passwords eller andre følsomme oplysninger til GitHub.
+
+## Questions
+
+- Kontakt projektets contributors ved spørgsmål.
 
