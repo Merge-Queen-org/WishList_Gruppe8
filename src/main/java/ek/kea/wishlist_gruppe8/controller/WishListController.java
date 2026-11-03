@@ -45,9 +45,17 @@ public class WishListController {
     }
 
     @PostMapping("/wishlist/{id}/wishes")
-    public String saveWishes (@PathVariable int id, @ModelAttribute Wish wish){
-        wishListService.saveNewWish(id,wish);
-        return "redirect:/wishlist/" + id;
+    public String saveWishes (@PathVariable int id, @ModelAttribute Wish wish, Model model){
+        try {
+            wishListService.saveNewWish(id,wish);
+            return "redirect:/wishlist/" + id;
+        } catch (IllegalArgumentException e) { // wish name is empty
+            WishList wishList = wishListService.getWishListById(id);
+            if (wishList == null) return "redirect:/";
+            model.addAttribute("wishList", wishList);
+            model.addAttribute("error", e.getMessage());
+            return "wish-form"; // show the form again with the error and what the user typed
+        }
     }
     @GetMapping("/wishlist/edit/{id}")
     public String showEditForm(@PathVariable int id, Model model) {

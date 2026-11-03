@@ -5,63 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>wishlist</title>
     <link rel="stylesheet" th:href="@{/index.css}">
-
+    <link rel="stylesheet" th:href="@{/wishlist.css}">
 </head>
-    <body>
-        <header>
-            <h1> ♡ WishList</h1>
-                <nav>
-                    <a th:href="@{/}">Home</a>
-                    <a th:href="@{/index}">My Wishlists</a>
-                </nav>
-        </header>
-        <main class="">
-            <div class="">
-                <div>
-                   <h1 th:text="${wishList.wishList_name}"> Title</h1>
-                    <p class="" th:text="${wishList.wishList_description}"> Description</p>
-                </div>
-                 <div class="">
-                    <a class="" th:href="@{/wishList/edit/{wishList_id}(wishList_id=${wishList.wishList_id})}">Edit</a>
-                     <form class="" th:action="@{/wishlist/delete}" method="post">
-                         <input type="hidden" name="wishListIds" th:value="${wishList.wishList_id}">
-                        <button class="" type="submit">Delete</button>
-                     </form>
-                </div>
-            <div>
-                <a th:href="@{/wishlist/{id}/wish/new(id=${wishList.wishList_id})}">Add wish</a>
-            </div>
+<body>
+<header>
+    <h1> ♡ WishList</h1>
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/index}">My Wishlists</a>
+    </nav>
+</header>
 
-            <p> There are no wishes on the list yet. </p>
+<main class="wishlist-page">
 
-            <ul>
-                <li>
-                    <div>
-                        <h3>
-                            <span></span>
-                        </h3>
-                        <p> Description</p>
-                        <p> price</p>
-                        <p>
-                            <a> link see product </a>
-                        </p>
-                    </div>
-                    <div>
-                        <a> Edit
-                        </a>
-                        <form with method="post">
-                            <button></button>
-                        </form>
-                    </div>
-                </li>
-            </ul>
-        </main>
-
-    <footer>
-        <div class="">
-            <p class="footer-copy">Copyrights &copy; 2026 All Rights Reserved by WishList</p>
+    <div class="wishlist-head">
+        <h2 th:text="${wishList.wishList_name}"> Title</h2>
+        <div class="buttons">
+            <a class="btn-save" th:href="@{/wishlist/{id}/wish/new(id=${wishList.wishList_id})}">Add wish</a>
+            <form th:action="@{/wishlist/delete}" method="post">
+                <input type="hidden" name="wishListIds" th:value="${wishList.wishList_id}">
+                <button class="btn-cancel" type="submit">Delete</button>
+            </form>
         </div>
-    </footer>
+    </div>
 
-    </body>
+    <p th:text="${wishList.wishList_description}"> Description</p>
+
+    <p class="wish-box empty" th:if="${#lists.isEmpty(wishList.wishes)}">There are no wishes on the list yet.</p>
+
+    <ul class="wish-list" th:unless="${#lists.isEmpty(wishList.wishes)}">
+        <li class="wish-box" th:each="wish : ${wishList.wishes}">
+            <div class="wish-head">
+                <h3 th:text="${wish.wish_name}"> Name </h3>
+                <div class="buttons">
+                    <a class="btn-save" th:href="@{/wish/edit/{wish_id}(wish_id=${wish.wish_id})}">Edit</a>
+                    <form th:action="@{/wish/delete/{wish_id}(wish_id=${wish.wish_id})}" method="post">
+                        <button class="btn-cancel" type="submit">Delete</button>
+                    </form>
+                </div>
+            </div>
+            <p th:text="${wish.wish_description}"> Description</p>
+            <p th:text="${wish.price}"> price kr. </p>
+            <p th:if="${wish.link != null and !wish.link.isBlank()}">
+                <a th:href="${wish.link}">See product</a>
+            </p>
+        </li>
+    </ul>
+
+    <a class="btn-cancel back" th:href="@{/create}">← Back</a>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <p>Copyrights &copy; 2026 All Rights Reserved by WishList</p>
+        </div>
+    </div>
+</footer>
+
+</body>
 </html>
