@@ -18,12 +18,12 @@ public class WishListService {
     }
 
     // Tjekker titel og gemmer
-    public void createWishList(String title, String description) {
+    public int createWishList(String title, String description) {
         if (title == null || title.isBlank()) {
             throw new IllegalArgumentException("Titel må ikke være tom");
         }
 
-        wishListRepository.save(new WishList(title, description));
+        return wishListRepository.save(new WishList(title.trim(), description));
     }
 
     // UPDATE: updates a wish
@@ -55,4 +55,5 @@ public class WishListService {
     public WishList getWishListById(int id){
         return wishListRepository.getWishListById(id);
     }
+
 }

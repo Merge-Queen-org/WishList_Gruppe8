@@ -3,8 +3,12 @@ package ek.kea.wishlist_gruppe8.repository;
 import ek.kea.wishlist_gruppe8.model.Wish;
 import ek.kea.wishlist_gruppe8.model.WishList;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.List;
 
 @Repository
@@ -16,10 +20,17 @@ public class WishListRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    // Gemmer en ny ønskeseddel i databasen
-    public void save(WishList wishList) {
+    // Gemmer en ny ønskeseddel og returnerer det nye id
+    public int save(WishList wishList) {
         String sql = "INSERT INTO wishlist (wishlist_name, description) VALUES (?, ?)";
-        jdbcTemplate.update(sql, wishList.getWishList_name(), wishList.getWishList_description());
+        KeyHolder keyHolder = new GeneratedKeyHolder(); // gemmer id'et som databasen laver
+        jdbcTemplate.update(con -> {
+            PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, wishList.getWishList_name());
+            ps.setString(2, wishList.getWishList_description());
+            return ps;
+        }, keyHolder);
+        return keyHolder.getKey().intValue();
     }
 
     // UPDATE: updates a wish by ID

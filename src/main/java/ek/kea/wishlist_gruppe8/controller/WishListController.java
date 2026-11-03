@@ -4,6 +4,7 @@ package ek.kea.wishlist_gruppe8.controller;
 import ek.kea.wishlist_gruppe8.model.Wish;
 import ek.kea.wishlist_gruppe8.model.WishList;
 import ek.kea.wishlist_gruppe8.service.WishListService;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -71,10 +72,21 @@ public class WishListController {
     // Modtager formularen når man trykker Gem
     @PostMapping("/create/add")
     public String addWishlist(@RequestParam String title,
-                              @RequestParam(required = false) String description) {
-        // gem i databasen via service/repository
-        return "redirect:/index";
+                              @RequestParam(required = false) String description,
+                              Model model) {
+        try {
+            int id = wishListService.createWishList(title, description); // gem i databasen
+            return "redirect:/wishlist/" + id; // vis den nye ønskeseddel
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", e.getMessage()); // tom titel
+        } catch (DuplicateKeyException e) {
+            model.addAttribute("error", "Der findes allerede en ønskeseddel med den titel"); // titel er UNIQUE
+        }
+        model.addAttribute("title", title);
+        model.addAttribute("description", description);
+        return "createWishList"; // vis formularen igen med fejl
     }
+
 
 }
 
