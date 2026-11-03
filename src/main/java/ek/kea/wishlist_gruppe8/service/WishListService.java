@@ -6,6 +6,8 @@ import ek.kea.wishlist_gruppe8.model.WishList;
 import ek.kea.wishlist_gruppe8.repository.WishListRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class WishListService {
 
@@ -23,6 +25,14 @@ public class WishListService {
     // UPDATE: updates a wishlist
     public WishList updateWishList(int id, WishList updated) {
         return wishRepository.updateWishList(id, updated);
+    }
+
+    public List<Wish> getWishesByWishlistId(int wishlist_id){
+        return wishListRepository.getWishesByWishlistId(wishlist_id);
+    }
+
+    public WishList getWishListById(int id){
+        return wishListRepository.getWishListById(id);
     }
 }
 

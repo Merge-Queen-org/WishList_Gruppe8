@@ -1,5 +1,6 @@
 package ek.kea.wishlist_gruppe8.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WishList {
@@ -21,7 +22,7 @@ public class WishList {
         this.wishList_id = wishList_id;
         this.wishList_name = wishList_name;
         this.wishList_description = wishList_description;
-        this.wishes = wishes;
+        this.wishes = (wishes !=null) ? wishes : new ArrayList<>(); //Den betyder: “Hvis wishes ikke er null, så brug den. Ellers lav en ny tom liste.”
     }
 
     // Getters and Setters
@@ -47,6 +48,7 @@ public class WishList {
     public void setWishList_description(String wishList_description) {
         this.wishList_description = wishList_description;
     }
+
     public List<Wish> getWishes() {
         return wishes;
     }
