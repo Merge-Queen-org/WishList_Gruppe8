@@ -34,15 +34,15 @@ public class WishListController {
         return "wishlist";
     }
 
-    @PostMapping("/wishList/edit")
-    public String editWishList(@ModelAttribute WishList wishList) {
-        wishListService.editWishList(wishList.getWishList_id(), wishList);
+    @PostMapping("/wishList/edit/{wishList_id}")
+    public String editWishList(@PathVariable int wishList_id, @ModelAttribute WishList wishList) {
+        wishListService.editWishList(wishList_id, wishList);
         return "redirect:/wishList";
     }
 
-    @PostMapping("/wish/edit")
-    public String editWish(@ModelAttribute Wish wish) {
-        wishListService.editWish(wish.getWish_id(), wish);
+    @PostMapping("/wish/edit/{wish_id}")
+    public String editWish(@PathVariable int wish_id,@ModelAttribute Wish wish) {
+        wishListService.editWish(wish_id, wish);
         return "redirect:/wish";
     }
     @PostMapping("/wish/delete/{wish_id}")
