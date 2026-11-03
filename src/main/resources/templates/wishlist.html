@@ -21,19 +21,15 @@
                    <h1 th:text="${wishList.wishList_name}"> Title</h1>
                     <p class="" th:text="${wishList.wishList_description}"> Description</p>
                 </div>
-            <div class="">
-                <div>
-                <a class="" th:href="@{/wishList/edit/{wishList_id}(wishList_id=${wishList.wishList_id})}">Edit</a>
+                 <div class="">
+                    <a class="" th:href="@{/wishList/edit/{wishList_id}(wishList_id=${wishList.wishList_id})}">Edit</a>
                      <form class="" th:action="@{/wishlist/delete}" method="post">
                          <input type="hidden" name="wishListIds" th:value="${wishList.wishList_id}">
                         <button class="" type="submit">Delete</button>
                      </form>
                 </div>
-            </div>
-            </div>
-
             <div>
-                Wish and add wish button
+                <a th:href="@{/wishlist/{id}/wish/new(id=${wishList.wishList_id})}">Add wish</a>
             </div>
 
             <p> There are no wishes on the list yet. </p>

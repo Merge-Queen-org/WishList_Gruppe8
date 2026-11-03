@@ -7,6 +7,7 @@ CREATE TABLE wishlist (
         description VARCHAR(1000)
 );
 INSERT INTO wishlist (wishlist_name, description) VALUES ('Birthday', 'Birthday wishes');
+INSERT INTO wishlist (wishlist_name, description) VALUES ('Empty', 'Empty list');
 
 CREATE TABLE wish
 (
@@ -23,3 +24,4 @@ INSERT INTO wish (wishlist_id, wish_name, description, price, link_url) VALUES
         (1, 'Bday', 'First wish', 100.00, 'https://www.chanel.com/dk/ure/p/H10132/j12-ur-28-mm/'),
         (1, 'Wedding', 'Second wish', 200.00, 'https://www.chanel.com/dk/briller/p/A71839X06081S850300POCCI/ovale-solbriller-sort/'),
         (1, 'Christmas', 'Third wish', 300.00, 'https://www2.hm.com/da_dk/productpage.1366553002.html');
+
