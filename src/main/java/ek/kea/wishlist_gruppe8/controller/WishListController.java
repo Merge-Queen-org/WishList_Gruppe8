@@ -64,16 +64,18 @@ public class WishListController {
         model.addAttribute("wishList", wishList);
         return "edit-wishlist";
     }
-    @PostMapping("/wishList/edit/{wishList_id}")
-    public String editWishList(@PathVariable int wishList_id, @ModelAttribute WishList wishList) {
-        wishListService.editWishList(wishList_id, wishList);
-        return "redirect:/wishList";
+    @PostMapping("/wishlist/edit/{id}")
+    public String editWishList(@PathVariable int id, @ModelAttribute WishList wishList) {
+        wishListService.editWishList(id, wishList);
+        return "redirect:/wishlist/" + id;
+        // back to the wishlist you just edited
     }
 
     @PostMapping("/wish/edit/{wish_id}")
     public String editWish(@PathVariable int wish_id, @ModelAttribute Wish wish) {
         wishListService.editWish(wish_id, wish);
-        return "redirect:/wish";
+        return "redirect:/wishlist/" + wish.getWishlist_id(); // back to the wishlist the wish belongs to
+
     }
 
     @PostMapping("/wish/delete/{wish_id}")
@@ -114,6 +116,24 @@ public class WishListController {
         model.addAttribute("description", description);
         return "createWishList"; // vis formularen igen med fejl
     }
+
+    //Show all Wishlists
+    @GetMapping("/index")
+    public String showAllWishLists(Model model) {
+        model.addAttribute("wishLists", wishListService.getAllWishLists());
+        return "allWishlists";
+    }
+
+    //edit wish
+    @GetMapping("/wish/edit/{wish_id}")
+    public String showEditWishForm(@PathVariable int wish_id, Model model) {
+        Wish wish = wishListService.getWishById(wish_id);
+        if (wish == null) return "redirect:/";
+        model.addAttribute("wish", wish);
+        return "edit-wish";
+    }
+
+
 
 
 }

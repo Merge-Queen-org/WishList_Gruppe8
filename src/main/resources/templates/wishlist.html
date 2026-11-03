@@ -49,6 +49,7 @@
             <p th:text="${wish.price}"> price kr. </p>
             <p th:if="${wish.link != null and !wish.link.isBlank()}">
                 <a th:href="${wish.link}">See product</a>
+
             </p>
         </li>
     </ul>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WishList-Edit Wishlist</title>
+  <link rel="stylesheet" th:href="@{/index.css}">
+  <link rel="stylesheet" th:href="@{/allWishlists.css}">
+</head>
+<body>
+
+<header>
+  <h1>♡ WishList</h1>
+
+  <nav>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/index}">My Wishlists</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="form-card">
+    <h2>Edit Wishlist</h2>
+
+    <form th:action="@{/wishlist/edit/{id}(id=${wishList.wishList_id})}" method="post">
+
+      <label for="name">Name</label>
+      <input type="text" id="name" name="wishList_name"
+             th:value="${wishList.wishList_name}" required>
+
+      <label for="description">Description</label>
+      <textarea id="description" name="wishList_description" rows="4"
+                th:text="${wishList.wishList_description}"></textarea>
+
+      <div class="form-actions">
+        <button type="submit" class="button">Save</button>
+        <a th:href="@{/wishlist/{id}(id=${wishList.wishList_id})}" class="button button-light">Cancel</a>
+      </div>
+
+    </form>
+  </div>
+
+</main>
+
+</body>
+</html>

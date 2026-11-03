@@ -59,6 +59,10 @@ public class WishListService {
         return wishListRepository.getWishListById(id);
     }
 
+    public Wish getWishById(int wish_id) {
+        return wishRepository.getWishById(wish_id);
+    }
+
     public void saveNewWish(int wishlist_id, Wish wish) {
         if (wish.getWish_name() == null || wish.getWish_name().isBlank()) {
             throw new IllegalArgumentException("Wish name must not be empty");
@@ -66,5 +70,11 @@ public class WishListService {
         wish.setWishlist_id(wishlist_id);
         wishRepository.saveNewWish(wish);
     }
+
+    public List<WishList> getAllWishLists() {
+        return wishListRepository.getAllWishLists();
+    }
+
+
 
 }
