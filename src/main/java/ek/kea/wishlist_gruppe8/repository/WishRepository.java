@@ -33,20 +33,4 @@ public class WishRepository {
                 rs.getString("link_url"),
                 rs.getBigDecimal("price")), wishlist_id);
     }
-
-    public Wish getWishById(int wish_id){
-        String sql = """
-                SELECT wish_id, wishlist_id, wish_name, description, link_url, price
-                FROM wish
-                WHERE wish_id = ?
-                """;
-        List<Wish> result = jdbcTemplate.query(sql, (rs, rowNum) -> new Wish(
-                rs.getInt("wish_id"),
-                rs.getInt("wishlist_id"),
-                rs.getString("wish_name"),
-                rs.getString("description"),
-                rs.getString("link_url"),
-                rs.getBigDecimal("price")), wish_id);
-        return result.isEmpty() ? null : result.get(0);
-    }
 }
