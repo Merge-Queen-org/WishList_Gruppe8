@@ -1,4 +1,60 @@
 package ek.kea.wishlist_gruppe8.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WishList {
+    private int wishList_id;
+    private String wishList_name;
+    private String wishList_description;
+    private List<Wish> wishes;
+
+
+    public WishList() {
+    }
+
+    public WishList(String wishList_name, String wishList_description) {
+        this.wishList_name = wishList_name;
+        this.wishList_description = wishList_description;
+    }
+
+    public WishList(int wishList_id, String wishList_name, String wishList_description, List<Wish> wishes) {
+        this.wishList_id = wishList_id;
+        this.wishList_name = wishList_name;
+        this.wishList_description = wishList_description;
+        this.wishes = (wishes !=null) ? wishes : new ArrayList<>(); //Den betyder: “Hvis wishes ikke er null, så brug den. Ellers lav en ny tom liste.”
+    }
+
+    // Getters and Setters
+    public int getWishList_id() {
+        return wishList_id;
+    }
+
+    public void setWishList_id(int wishList_id) {
+        this.wishList_id = wishList_id;
+    }
+
+    public String getWishList_name() {
+        return wishList_name;
+    }
+
+    public void setWishList_name(String wishList_name) {
+        this.wishList_name = wishList_name;
+    }
+
+    public String getWishList_description() {
+        return wishList_description;
+    }
+    public void setWishList_description(String wishList_description) {
+        this.wishList_description = wishList_description;
+    }
+
+    public List<Wish> getWishes() {
+        return wishes;
+    }
+
+    public void setWishes(List<Wish> wishes) {
+        this.wishes = wishes;
+    }
 }
+
