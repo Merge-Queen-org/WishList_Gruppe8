@@ -5,6 +5,7 @@ import ek.kea.wishlist_gruppe8.model.Wish;
 import ek.kea.wishlist_gruppe8.model.WishList;
 import ek.kea.wishlist_gruppe8.service.WishListService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,15 +26,23 @@ public class WishListController {
         return "index";
     }
 
-    @PostMapping("/wishList/edit")
-    public String editWishList(@ModelAttribute WishList wishList) {
-        wishListService.editWishList(wishList.getWishList_id(), wishList);
+    @GetMapping("/wishlist/{id}")
+    public String getWishlistById (@PathVariable int id, Model model){
+        WishList wishList = wishListService.getWishListById(id);
+        if (wishList == null) return "redirect:/";
+        model.addAttribute("wishList", wishList);
+        return "wishlist";
+    }
+
+    @PostMapping("/wishList/edit/{wishList_id}")
+    public String editWishList(@PathVariable int wishList_id, @ModelAttribute WishList wishList) {
+        wishListService.editWishList(wishList_id, wishList);
         return "redirect:/wishList";
     }
 
-    @PostMapping("/wish/edit")
-    public String editWish(@ModelAttribute Wish wish) {
-        wishListService.editWish(wish.getWish_id(), wish);
+    @PostMapping("/wish/edit/{wish_id}")
+    public String editWish(@PathVariable int wish_id,@ModelAttribute Wish wish) {
+        wishListService.editWish(wish_id, wish);
         return "redirect:/wish";
     }
     @PostMapping("/wish/delete/{wish_id}")
