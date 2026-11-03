@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WishList-My Wishlists</title>
+    <link rel="stylesheet" th:href="@{/index.css}">
+    <link rel="stylesheet" th:href="@{/allWishlists.css}">
+</head>
+<body>
+
+<header>
+    <h1>♡ WishList</h1>
+
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/index}">My Wishlists</a>
+    </nav>
+</header>
+
+<main>
+
+    <div class="page-title">
+        <h2>My Wishlists</h2>
+        <a th:href="@{/create}" class="button">Create Wishlist</a>
+    </div>
+
+    <p th:if="${#lists.isEmpty(wishLists)}" class="empty-text">
+        You don't have any wishlists yet.
+    </p>
+
+    <div class="card-grid">
+        <div class="card" th:each="list : ${wishLists}">
+            <h3 th:text="${list.wishList_name}">Name</h3>
+            <p th:text="${list.wishList_description}">Description</p>
+
+            <div class="card-actions">
+                <a th:href="@{/wishlist/{id}(id=${list.wishList_id})}" class="button">Open</a>
+                <a th:href="@{/wishlist/edit/{id}(id=${list.wishList_id})}" class="button button-light">Edit</a>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+</body>
+</html>

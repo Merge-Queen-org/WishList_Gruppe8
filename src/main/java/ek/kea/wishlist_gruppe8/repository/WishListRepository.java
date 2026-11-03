@@ -113,10 +113,10 @@ Therefore:
 
     public WishList getWishListById(int id){
         String sql = """
-                SELECT wishlist_id, wishlist_name, description
-                FROM wishlist
-                WHERE wishlist_id = ?
-                """;
+        SELECT wishlist_id, wishlist_name, description AS wishList_description
+        FROM wishlist
+        WHERE wishlist_id = ?
+        """;
         /*Here you are creating another RowMapper using a lambda expression.
 But you already created a separate class called WishListRowMapper.
 You can replace that code with:
@@ -132,4 +132,16 @@ Much cleaner!*/
         list.setWishes(wishRepository.getWishesByWishlistId(id)); //separately retrieve all wishes belonging to that wishlist.
         return list;
     }
+
+    //Show all wishListes
+    public List<WishList> getAllWishLists() {
+        String sql = """
+            SELECT wishlist_id, wishlist_name, description AS wishList_description
+            FROM wishlist
+            ORDER BY wishlist_id
+            """;
+        return jdbcTemplate.query(sql, rowMapper);
+    }
+
+
 }

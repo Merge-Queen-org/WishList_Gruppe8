@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit wish</title>
+  <link rel="stylesheet" th:href="@{/create.css}">
+  <link rel="stylesheet" th:href="@{/index.css}">
+</head>
+<body>
+<header>
+  <h1> ♡ WishList</h1>
+  <nav>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/index}">My Wishlists</a>
+  </nav>
+</header>
+
+<main class="create-page">
+  <h2>Edit wish</h2>
+
+  <form class="form-card" th:action="@{/wish/edit/{id}(id=${wish.wish_id})}" th:object="${wish}" method="post">
+    <input type="hidden" th:field="*{wishlist_id}">
+
+    <label for="wish_name">Name</label>
+    <input type="text" id="wish_name" th:field="*{wish_name}" required>
+
+    <label for="wish_description">Description (optional)</label>
+    <textarea id="wish_description" th:field="*{wish_description}"></textarea>
+
+    <label for="price">Price (optional)</label>
+    <input type="number" id="price" step="0.01" min="0" th:field="*{price}">
+
+    <label for="link">Link (optional)</label>
+    <input type="text" id="link" th:field="*{link}">
+
+    <div class="form-buttons">
+      <button type="submit" class="btn-save">Save</button>
+      <a th:href="@{/wishlist/{id}(id=${wish.wishlist_id})}" class="btn-cancel">Cancel</a>
+    </div>
+  </form>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <p>Copyrights &copy; 2026 All Rights Reserved by WishList</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

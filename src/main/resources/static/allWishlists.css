@@ -1,0 +1,109 @@
+/* Page title row */
+.page-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 40px 0 40px;
+}
+
+.page-title h2 {
+    font-family: Georgia, serif;
+    font-size: 34px;
+    color: #442735;
+    margin: 0;
+}
+
+.empty-text {
+    margin: 30px 40px;
+    font-size: 18px;
+}
+
+/* Wishlist cards */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    margin: 30px 40px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(68, 39, 53, 0.08);
+}
+
+.card h3 {
+    font-family: Georgia, serif;
+    color: #803c55;
+    margin-top: 0;
+}
+
+.card-actions {
+    margin-top: 20px;
+}
+
+/* Lighter button variant */
+.button-light {
+    background-color: #f3dfe5;
+    color: #803c55;
+}
+
+.button-light:hover {
+    background-color: #ead0da;
+}
+
+@media (max-width: 700px) {
+    .page-title {
+        margin: 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .card-grid {
+        margin: 20px;
+    }
+}
+
+/* Form card */
+.form-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 35px;
+    max-width: 500px;
+    margin: 40px auto;
+    box-shadow: 0 8px 25px rgba(68, 39, 53, 0.08);
+}
+
+.form-card h2 {
+    font-family: Georgia, serif;
+    color: #442735;
+    margin-top: 0;
+}
+
+.form-card label {
+    display: block;
+    margin: 15px 0 5px 0;
+    color: #803c55;
+}
+
+.form-card input,
+.form-card textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #f0e3e7;
+    border-radius: 12px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+.form-actions {
+    margin-top: 25px;
+}
+
+.form-actions button {
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
