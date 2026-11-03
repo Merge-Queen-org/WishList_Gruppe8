@@ -26,7 +26,7 @@ public class WishListController {
         return "index";
     }
 
-    @GetMapping("/wishlist/{id}")
+    @GetMapping("/wishList/{id}")
     public String getWishlistById (@PathVariable int id, Model model){
         WishList wishList = wishListService.getWishListById(id);
         if (wishList == null) return "redirect:/";
