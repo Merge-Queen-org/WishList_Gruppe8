@@ -26,7 +26,7 @@ public class WishListController {
         return "index";
     }
 
-    @GetMapping("/wishList/{id}")
+    @GetMapping("/wishlist/{id}")
     public String getWishlistById (@PathVariable int id, Model model){
         WishList wishList = wishListService.getWishListById(id);
         if (wishList == null) return "redirect:/";
@@ -47,7 +47,13 @@ public class WishListController {
         wishListService.saveNewWish(id,wish);
         return "redirect:/wishlist/" + id;
     }
-
+    @GetMapping("/wishlist/edit/{id}")
+    public String showEditForm(@PathVariable int id, Model model) {
+        WishList wishList = wishListService.getWishListById(id);
+        if (wishList == null) return "redirect:/";
+        model.addAttribute("wishList", wishList);
+        return "edit-wishlist";
+    }
     @PostMapping("/wishList/edit/{wishList_id}")
     public String editWishList(@PathVariable int wishList_id, @ModelAttribute WishList wishList) {
         wishListService.editWishList(wishList_id, wishList);
