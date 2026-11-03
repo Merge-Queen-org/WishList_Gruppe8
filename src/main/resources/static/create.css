@@ -1,9 +1,11 @@
 /* Hele siden */
 body {
     margin: 0;
-    background-color: #f5dcc6;
+    background: linear-gradient(135deg, #fffaf8, #f8e9ed, #f3dfe5);
+    background-attachment: fixed;
+    min-height: 100vh;
     font-family: Arial, sans-serif;
-    color: #3a2a22;
+    color: #442735;
 }
 
 /* Sidens indhold */
@@ -18,16 +20,23 @@ body {
     font-family: Georgia, serif;
     font-size: 56px;
     font-weight: bold;
-    color: #3a2a22;
+    color: #442735;
     margin: 0 0 20px 0;
 }
 
 /* Kortet rundt om formularen */
 .form-card {
-    background-color: #fcefe4;
-    border: 1px solid #e8c4a8;
+    background: linear-gradient(120deg, #f3dfe5, #ead0da);
     border-radius: 20px;
     padding: 35px 30px;
+    box-shadow: 0 8px 25px rgba(68, 39, 53, 0.08);
+}
+
+/* Fejlbesked */
+.error {
+    color: #a34f6c;
+    font-weight: bold;
+    margin: 0 0 20px 0;
 }
 
 /* Labels */
@@ -46,9 +55,9 @@ body {
     padding: 14px;
     font-family: Arial, sans-serif;
     font-size: 16px;
-    color: #3a2a22;
-    background-color: #fcefe4;
-    border: 1px solid #e8c4a8;
+    color: #442735;
+    background-color: #fffaf8;
+    border: 1px solid #f0e3e7;
     border-radius: 12px;
     margin-bottom: 30px;
 }
@@ -66,7 +75,7 @@ body {
 .form-card input:focus,
 .form-card textarea:focus {
     outline: none;
-    border-color: #b5552f;
+    border-color: #a34f6c;
 }
 
 /* Knapperne */
@@ -77,31 +86,33 @@ body {
 
 .btn-save,
 .btn-cancel {
-    padding: 16px 36px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 30px;
+    padding: 13px 22px;
+    font-size: 16px;
+    border-radius: 25px;
     cursor: pointer;
     text-decoration: none;
     font-family: Arial, sans-serif;
+    transition: 0.3s;
 }
 
 .btn-save {
-    background-color: #b5552f;
+    background-color: #a34f6c;
     color: white;
     border: none;
 }
 
 .btn-save:hover {
-    background-color: #964525;
+    background-color: #803c55;
+    transform: translateY(-3px);
 }
 
 .btn-cancel {
     background-color: transparent;
-    color: #3a2a22;
-    border: 1.5px solid #3a2a22;
+    color: #a34f6c;
+    border: 1.5px solid #a34f6c;
 }
 
 .btn-cancel:hover {
-    background-color: #f5dcc6;
+    background-color: #f8e9ed;
+    transform: translateY(-3px);
 }
