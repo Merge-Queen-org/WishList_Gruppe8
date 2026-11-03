@@ -41,7 +41,12 @@ Man kan oprette, redigere og slette ønskelister og ønsker. Hvert ønske kan in
 ## Projektstyring
 User stories og tasks findes i GitHub Projects.
 
+## Databasedesign
+
+
+## Klassediagram
+
 
 ## Contributing
 
-Læs [CONTRIBUTING.md](CONTRIBUTING.md), hvis du vil vide, hvordan du kan bidrage til projektet.
+Læs [[contributing.md](contributing.md)], hvis du vil vide, hvordan du kan bidrage til projektet.
