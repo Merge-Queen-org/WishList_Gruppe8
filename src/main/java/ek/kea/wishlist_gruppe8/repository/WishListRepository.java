@@ -15,6 +15,12 @@ public class WishListRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    // Gemmer en ny ønskeseddel i databasen
+    public void save(WishList wishList) {
+        String sql = "INSERT INTO wishlist (wishlist_name, description) VALUES (?, ?)";
+        jdbcTemplate.update(sql, wishList.getWishList_name(), wishList.getWishList_description());
+    }
+
     // UPDATE: updates a wish by ID
     public Wish editWish(int id, Wish updated) {
         String sql = """
@@ -55,7 +61,6 @@ public class WishListRepository {
                 sql,
                 updated.getWishList_name(),
                 updated.getWishList_description(),
-                updated.getShareToken(),
                 id
         );
 
@@ -64,5 +69,25 @@ public class WishListRepository {
         }
 
         return null;
+
+    }
+    // DELETE: deletes a wish
+    public boolean deleteWish(int wish_id) {
+        return jdbcTemplate.update(
+                "DELETE FROM wish WHERE wish_id = ?",
+                wish_id
+        ) > 0;
+    }
+    /*The > 0 checks whether at least one row was affected.
+Therefore:
+- If the result is greater than 0 → true.
+- If the result is 0 → false.*/
+
+    // DELETE: deletes a wishlist
+    public boolean deleteWishList(int wishList_id) {
+        return jdbcTemplate.update(
+                "DELETE FROM wishlist WHERE wishlist_id = ?",
+                wishList_id
+        ) > 0;
     }
 }

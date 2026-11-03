@@ -6,15 +6,21 @@ public class WishList {
     private int wishList_id;
     private String wishList_name;
     private String wishList_description;
-    private String shareToken;
     private List<Wish> wishes;
 
 
-    public WishList(int wishList_id, String wishList_name, String wishList_description, String shareToken, List<Wish> wishes) {
+    public WishList() {
+    }
+
+    public WishList(String wishList_name, String wishList_description) {
+        this.wishList_name = wishList_name;
+        this.wishList_description = wishList_description;
+    }
+
+    public WishList(int wishList_id, String wishList_name, String wishList_description, List<Wish> wishes) {
         this.wishList_id = wishList_id;
         this.wishList_name = wishList_name;
         this.wishList_description = wishList_description;
-        this.shareToken = shareToken;
         this.wishes = wishes;
     }
 
@@ -41,15 +47,6 @@ public class WishList {
     public void setWishList_description(String wishList_description) {
         this.wishList_description = wishList_description;
     }
-
-    public String getShareToken() {
-        return shareToken;
-    }
-
-    public void setShareToken(String shareToken) {
-        this.shareToken = shareToken;
-    }
-
     public List<Wish> getWishes() {
         return wishes;
     }

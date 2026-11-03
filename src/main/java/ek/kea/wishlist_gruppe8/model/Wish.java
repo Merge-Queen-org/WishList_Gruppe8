@@ -10,6 +10,9 @@ public class Wish {
     private BigDecimal price;
 
 
+    public Wish() {
+    }
+
     public Wish(int wish_id, String name, String description, String link, BigDecimal price) {
         this.wish_id = wish_id;
         this.wish_name = name;
@@ -30,7 +33,7 @@ public class Wish {
         return wish_name;
     }
 
-    public void setWish_name(String name) {
+    public void setWish_name(String wish_name) {
         this.wish_name = wish_name;
     }
 
@@ -38,7 +41,7 @@ public class Wish {
         return wish_description;
     }
 
-    public void setWishDescription(String description) {
+    public void setWishDescription(String wish_description) {
         this.wish_description = wish_description;
     }
 
