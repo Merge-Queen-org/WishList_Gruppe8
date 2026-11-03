@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add wish</title>
     <link rel="stylesheet" th:href="@{/create.css}">
+    <link rel="stylesheet" th:href="@{/index.css}">
 </head>
 <body>
+<header>
+    <h1> ♡ WishList</h1>
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/index}">My Wishlists</a>
+    </nav>
+</header>
 
 <main class="create-page">
     <h2>Add a wish</h2>
@@ -18,11 +26,11 @@
         <label for="wish_description">Description (optional)</label>
         <textarea id="wish_description" th:field="*{wish_description}"></textarea>
 
-        <label for="link">Link (optional)</label>
-        <input type="text" id="link" th:field="*{link}">
-
         <label for="price">Price (optional)</label>
         <input type="number" id="price" step="0.01" min="0" th:field="*{price}">
+
+        <label for="link">Link (optional)</label>
+        <input type="text" id="link" th:field="*{link}">
 
         <div class="form-buttons">
             <button type="submit" class="btn-save">Save</button>
@@ -30,6 +38,14 @@
         </div>
     </form>
 </main>
+
+<footer>
+    <div class="container">
+        <div class="footer-inner">
+            <p>Copyrights &copy; 2026 All Rights Reserved by WishList</p>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
