@@ -31,7 +31,7 @@ public class WishListController {
     @GetMapping("/wishlist/{id}")
     public String getWishlistById(@PathVariable int id, Model model) {
         WishList wishList = wishListService.getWishListById(id);
-        if (wishList == null) return "redirect:/";
+        if (wishList == null) return "wishlist-not-found"; // tell the user instead of silently redirecting
         model.addAttribute("wishList", wishList);
         return "wishlist";
     }

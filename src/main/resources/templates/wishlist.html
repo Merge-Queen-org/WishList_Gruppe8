@@ -45,7 +45,7 @@
                 </div>
             </div>
             <p th:text="${wish.wish_description}"> Description</p>
-            <p th:text="${wish.price}"> price kr. </p>
+            <p th:if="${wish.price != null}" th:text="'Price: ' + ${#numbers.formatDecimal(wish.price, 1, 2)} + ' kr.'"> price kr. </p>
             <p th:if="${wish.link != null and !wish.link.isBlank()}">
                 <a th:href="${wish.link}">See product</a>
 
