@@ -104,12 +104,21 @@ Therefore:
 - If the result is 0 → false.*/
 
     // DELETE: deletes a wishlist
+    //update() does the database work.
     public boolean deleteWishList(int wishList_id) {
+        jdbcTemplate.update(
+                "DELETE FROM wish WHERE wishlist_id = ?",
+                wishList_id
+        );
+        //return communicates the result to the service.
         return jdbcTemplate.update(
                 "DELETE FROM wishlist WHERE wishlist_id = ?",
                 wishList_id
         ) > 0;
     }
+    // now This deletes:
+    //1. All wishes connected to that wishlist.
+    //2. The wishlist itself.
 
     public WishList getWishListById(int id){
         String sql = """

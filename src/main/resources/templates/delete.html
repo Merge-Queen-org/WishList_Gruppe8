@@ -24,20 +24,14 @@
 
             <div class="wishlist-card"
                  th:each="wishList : ${wishLists}">
+                <span th:text="${wishList.wishList_name}">Birthday</span>
 
-                <label>
-                    <input type="checkbox"
-                           name="wishListIds"
-                           th:value="${wishList.id}">
+                <form th:action="@{/wishlist/delete/{id}(id=${wishList.wishList_id})}"
+                      method="post">
 
-                    <span th:text="${wishList.name}">Birthday</span>
-                </label>
-
-            </div>
-
-        </div>
-
-        <button type="submit" class="button">Delete selected</button>
+                    <button type="submit" class="button">
+                        Delete
+                    </button>
 
     </form>
 
