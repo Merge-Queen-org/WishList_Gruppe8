@@ -31,16 +31,49 @@
     border-radius: 20px;
     padding: 25px;
     box-shadow: 0 8px 25px rgba(68, 39, 53, 0.08);
+    position: relative;
+}
+
+.main-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.delete-form {
+    position: absolute;
+    top: 15px;
+    right: 18px;
+    margin: 0;
+}
+
+/* Small, quiet delete button */
+.button-delete {
+    background: none;
+    border: none;
+    color: #b08a97;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 6px 0;
+    text-decoration: underline;
+}
+.button-delete:hover {
+    color: #c0495f;
 }
 
 .card h3 {
     font-family: Georgia, serif;
     color: #803c55;
     margin-top: 0;
+
 }
 
 .card-actions {
-    margin-top: 20px;
+    margin-top: auto;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 /* Lighter button variant */
@@ -106,4 +139,17 @@
     border: none;
     cursor: pointer;
     font-size: 16px;
+}
+
+.delete-form {
+    position: static;
+    margin: 0 0 0 auto;
+}
+
+button.button {
+    border: none;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: normal;
 }
