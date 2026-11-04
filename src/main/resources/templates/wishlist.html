@@ -22,8 +22,7 @@
         <h2 th:text="${wishList.wishList_name}"> Title</h2>
         <div class="buttons">
             <a class="btn-save" th:href="@{/wishlist/{id}/wish/new(id=${wishList.wishList_id})}">Add wish</a>
-            <form th:action="@{/wishlist/delete}" method="post">
-                <input type="hidden" name="wishListIds" th:value="${wishList.wishList_id}">
+            <form th:action="@{/wishlist/delete/{id}(id=${wishList.wishList_id})}" method="post">
                 <button class="btn-cancel" type="submit">Delete</button>
             </form>
         </div>
@@ -54,7 +53,7 @@
         </li>
     </ul>
 
-    <a class="btn-cancel back" th:href="@{/create}">← Back</a>
+    <a class="btn-cancel back" th:href="@{/index}">← Back</a>
 </main>
 
 <footer>

@@ -10,32 +10,29 @@
 
 <header>
     <h1>♡ WishList</h1>
-    <a th:href="@{/wishlist}">My Wishlists</a>
+    <a th:href="@{/index}">My Wishlists</a>
 </header>
 
 <main class="delete-main">
 
     <h2>Delete Wishlists</h2>
-    <p>Select the wishlists you want to delete.</p>
+    <p>Click Delete next to the wishlist you want to remove.</p>
 
-    <form th:action="@{/wishlist/delete}" method="post">
+    <div class="wishlist-container">
 
-        <div class="wishlist-container">
+        <div class="wishlist-card"
+             th:each="wishList : ${wishLists}">
+            <span th:text="${wishList.wishList_name}">Birthday</span>
 
-            <div class="wishlist-card"
-                 th:each="wishList : ${wishLists}">
-                <span th:text="${wishList.wishList_name}">Birthday</span>
+            <form th:action="@{/wishlist/delete/{id}(id=${wishList.wishList_id})}"
+                  method="post">
+                <button type="submit" class="button">Delete</button>
+            </form>
+        </div>
 
-                <form th:action="@{/wishlist/delete/{id}(id=${wishList.wishList_id})}"
-                      method="post">
+    </div>
 
-                    <button type="submit" class="button">
-                        Delete
-                    </button>
-
-    </form>
-
-    <a class="back-link" th:href="@{/wishlist}">← Back to my wishlists</a>
+    <a class="back-link" th:href="@{/index}">← Back to my wishlists</a>
 
 </main>
 
