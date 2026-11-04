@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opret ønskeseddel</title>
+    <title>Create Wishlist</title>
     <link rel="stylesheet" th:href="@{/create.css}">
 </head>
 <body>
 
 <main class="create-page">
-    <h2>Ny ønskeseddel</h2>
+    <h2>New Wishlist</h2>
 
     <form class="form-card" th:action="@{/create/add}" method="post">
         <p class="error" th:if="${error}" th:text="${error}">Fejl</p>
@@ -17,12 +17,12 @@
         <label for="title">Titel</label>
         <input type="text" id="title" name="title" maxlength="100" th:value="${title}" required>
 
-        <label for="description">Beskrivelse (valgfri)</label>
+        <label for="description">Description (optional)</label>
         <textarea id="description" name="description" maxlength="1000" th:text="${description}"></textarea>
 
         <div class="form-buttons">
-            <button type="submit" class="btn-save">Gem</button>
-            <a th:href="@{/}" class="btn-cancel">Annuller</a>
+            <button type="submit" class="btn-save">Save</button>
+            <a th:href="@{/}" class="btn-cancel">Cancel</a>
         </div>
     </form>
 </main>

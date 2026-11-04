@@ -37,7 +37,11 @@
             <div class="card-actions">
                 <a th:href="@{/wishlist/{id}(id=${list.wishList_id})}" class="button">Open</a>
                 <a th:href="@{/wishlist/edit/{id}(id=${list.wishList_id})}" class="button button-light">Edit</a>
-            </div>
+                <form th:action="@{/wishlist/delete/{id}(id=${list.wishList_id})}" method="post"
+                      class="delete-form">
+                    <button type="submit" class="button button-light">Delete</button>
+                </form>
+
         </div>
     </div>
 
