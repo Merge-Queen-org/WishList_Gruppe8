@@ -23,7 +23,6 @@
     <div class="page-title">
         <h2>My Wishlists</h2>
         <a th:href="@{/create}" class="button">Create Wishlist</a>
-        <a th:href="@{/wishlist/delete}" class="button">Delete Wishlists</a>
     </div>
 
     <p th:if="${#lists.isEmpty(wishLists)}" class="empty-text">
