@@ -1,8 +1,6 @@
 package ek.kea.wishlist_gruppe8.repository;
 
 import ek.kea.wishlist_gruppe8.model.Wish;
-import ek.kea.wishlist_gruppe8.model.WishList;
-import ek.kea.wishlist_gruppe8.model.WishListRowMapper;
 import ek.kea.wishlist_gruppe8.model.WishRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
