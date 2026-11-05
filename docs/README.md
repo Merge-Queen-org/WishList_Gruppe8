@@ -45,7 +45,7 @@ https://lucid.app/lucidchart/283ff079-1301-4caa-9c8b-2c2d4c173dca/edit?page=0_0&
 
 
 ## Klassediagram
-[ClassDiagramWishList….pdf](https://github.com/user-attachments/files/34437504/ClassDiagramWishList.pdf)
+[ClassDiagramWishList….pdf](ClassDiagramWishList....pdf)
 
 ## Contributing
 
