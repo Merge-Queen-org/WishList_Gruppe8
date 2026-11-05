@@ -7,9 +7,8 @@ Her kan du læse, hvordan du kommer i gang med udviklingen.
 
 1. Klon projektet fra GitHub.
 2. Åbn projektet i IntelliJ.
-3. Opret databasen `wishlist_db` i MySQL.
-4. Kontrollér databaseindstillingerne.
-5. Start applikationen.
+3. Kontrollér databaseindstillingerne.
+4. Start applikationen.
 
 ## Projektstruktur
 
@@ -35,7 +34,7 @@ Når du arbejder på en ny funktion:
 
 Vi bruger følgende branch-navne:
 
-- `feature/` til nye funktioner.
+- `feature-` til nye funktioner.
   
 `deploy`-branchen bruges som udgangspunkt for nye branches og samler godkendte ændringer.
 
