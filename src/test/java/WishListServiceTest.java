@@ -40,4 +40,60 @@ public class WishListServiceTest {
         verify(wishRepository, never()).saveNewWish(any()); //this must have happened zero times with any argument
 
     }
+
+    @Test
+    void saveNewWish_rejectsJavascriptLink() {
+        WishRepository wishRepository = mock(WishRepository.class);
+        WishListService service = new WishListService(mock(WishListRepository.class), wishRepository);
+
+        Wish wish = new Wish("Bag", "Red", "javascript:alert(1)", new BigDecimal("10"));
+
+        assertThrows(IllegalArgumentException.class, () -> service.saveNewWish(5, wish));
+        verify(wishRepository, never()).saveNewWish(any());
+    }
+
+    @Test
+    void saveNewWish_rejectsNegativePrice() {
+        WishRepository wishRepository = mock(WishRepository.class);
+        WishListService service = new WishListService(mock(WishListRepository.class), wishRepository);
+
+        Wish wish = new Wish("Bag", "Red", "https://link", new BigDecimal("-1"));
+
+        assertThrows(IllegalArgumentException.class, () -> service.saveNewWish(5, wish));
+    }
+
+    @Test
+    void editWish_keepsOriginalWishlistId() {
+        WishListRepository wishListRepository = mock(WishListRepository.class);
+        WishRepository wishRepository = mock(WishRepository.class);
+        WishListService service = new WishListService(wishListRepository, wishRepository);
+        when(wishRepository.getWishById(7)).thenReturn(new Wish(7, 3, "Old", "d", null, null));
+        when(wishListRepository.editWish(eq(7), any())).thenAnswer(i -> i.getArgument(1));
+
+        Wish tampered = new Wish("New", "d", "https://link", null);
+        tampered.setWishlist_id(99); // comes from the form, must be ignored
+        Wish saved = service.editWish(7, tampered);
+
+        assertEquals(3, saved.getWishlist_id());
+    }
+
+    @Test
+    void editWish_unknownWishReturnsNull() {
+        WishListRepository wishListRepository = mock(WishListRepository.class);
+        WishRepository wishRepository = mock(WishRepository.class);
+        WishListService service = new WishListService(wishListRepository, wishRepository);
+
+        assertEquals(null, service.editWish(42, new Wish("New", "d", null, null)));
+        verify(wishListRepository, never()).editWish(anyInt(), any());
+    }
+
+    @Test
+    void editWishList_blankNameThrows() {
+        WishListRepository wishListRepository = mock(WishListRepository.class);
+        WishListService service = new WishListService(wishListRepository, mock(WishRepository.class));
+
+        assertThrows(IllegalArgumentException.class,
+                () -> service.editWishList(1, new ek.kea.wishlist_gruppe8.model.WishList(" ", "d")));
+        verify(wishListRepository, never()).editWishList(anyInt(), any());
+    }
 }

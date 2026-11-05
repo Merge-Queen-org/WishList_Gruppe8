@@ -30,13 +30,22 @@ public class WishListService {
         return wishListRepository.save(new WishList(title.trim(), description));
     }
 
-    // UPDATE: updates a wish
+    // UPDATE: updates a wish. Returns null if the wish doesn't exist.
     public Wish editWish(int id, Wish updated) {
+        validateWish(updated);
+        Wish existing = wishRepository.getWishById(id);
+        if (existing == null) return null;
+        updated.setWish_id(id);
+        updated.setWishlist_id(existing.getWishlist_id()); // never trust the wishlist id from the form
         return wishListRepository.editWish(id, updated);
     }
 
-    // UPDATE: updates a wishlist
+    // UPDATE: updates a wishlist. Returns null if the wishlist doesn't exist.
     public WishList editWishList(int id, WishList updated) {
+        if (updated.getWishList_name() == null || updated.getWishList_name().isBlank()) {
+            throw new IllegalArgumentException("Name must not be empty");
+        }
+        updated.setWishList_name(updated.getWishList_name().trim());
         return wishListRepository.editWishList(id, updated);
     }
 
@@ -69,11 +78,31 @@ public class WishListService {
     }
 
     public void saveNewWish(int wishlist_id, Wish wish) {
+        validateWish(wish);
+        wish.setWishlist_id(wishlist_id);
+        wishRepository.saveNewWish(wish);
+    }
+
+    // Shared by create and edit: name required, price not negative, link must be http(s)
+    private void validateWish(Wish wish) {
         if (wish.getWish_name() == null || wish.getWish_name().isBlank()) {
             throw new IllegalArgumentException("Wish name must not be empty");
         }
-        wish.setWishlist_id(wishlist_id);
-        wishRepository.saveNewWish(wish);
+        wish.setWish_name(wish.getWish_name().trim());
+        if (wish.getPrice() != null && wish.getPrice().signum() < 0) {
+            throw new IllegalArgumentException("Price must not be negative");
+        }
+        String link = wish.getLink();
+        if (link == null || link.isBlank()) {
+            wish.setLink(null);
+        } else {
+            link = link.trim();
+            String lower = link.toLowerCase();
+            if (!lower.startsWith("http://") && !lower.startsWith("https://")) { // blocks javascript: links
+                throw new IllegalArgumentException("Link must start with http:// or https://");
+            }
+            wish.setLink(link);
+        }
     }
 
     public List<WishList> getAllWishLists() {

@@ -19,6 +19,8 @@
 <main class="create-page">
   <h2>Edit wish</h2>
 
+  <p class="error" th:if="${error}" th:text="${error}">Error</p>
+
   <form class="form-card" th:action="@{/wish/edit/{id}(id=${wish.wish_id})}" th:object="${wish}" method="post">
     <input type="hidden" th:field="*{wishlist_id}">
 

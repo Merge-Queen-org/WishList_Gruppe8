@@ -23,6 +23,8 @@
   <div class="form-card">
     <h2>Edit Wishlist</h2>
 
+    <p class="error" th:if="${error}" th:text="${error}">Error</p>
+
     <form th:action="@{/wishlist/edit/{id}(id=${wishList.wishList_id})}" method="post">
 
       <label for="name">Name</label>
