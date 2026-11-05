@@ -33,15 +33,15 @@ Man kan oprette, redigere og slette ønskelister og ønsker. Hvert ønske kan in
 
 1. Klon projektet fra GitHub.
 2. Åbn projektet i IntelliJ.
-3. Opret databasen `wishlist_db` i MySQL.
-4. Kontrollér databaseindstillingerne i konfigurationsfilen.
-5. Start `WishListGruppe8Application.java`.
-6. Åbn http://localhost:8080 i din browser.
+3. Kontrollér databaseindstillingerne i konfigurationsfilen.
+4. Åbn http://localhost:8080 i din browser.
 
 ## Projektstyring
 User stories og tasks findes i GitHub Projects.
 
 ## Databasedesign
+https://lucid.app/lucidchart/283ff079-1301-4caa-9c8b-2c2d4c173dca/edit?page=0_0&invitationId=inv_ad224aa9-c1b0-4cfa-aae0-a828aba43a1a#
+<img width="1135" height="284" alt="Screenshot 2026-11-05 at 10 12 42" src="https://github.com/user-attachments/assets/037e0a3c-0e32-478b-a0e5-53026c91d8d3" />
 
 
 ## Klassediagram
