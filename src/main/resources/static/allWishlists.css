@@ -153,3 +153,9 @@ button.button {
     font-size: 16px;
     line-height: normal;
 }
+/* Error message */
+.error {
+    color: #a34f6c;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+}

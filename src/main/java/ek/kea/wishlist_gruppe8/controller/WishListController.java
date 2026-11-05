@@ -4,6 +4,7 @@ package ek.kea.wishlist_gruppe8.controller;
 import ek.kea.wishlist_gruppe8.model.Wish;
 import ek.kea.wishlist_gruppe8.model.WishList;
 import ek.kea.wishlist_gruppe8.service.WishListService;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,7 +50,9 @@ public class WishListController {
         try {
             wishListService.saveNewWish(id,wish);
             return "redirect:/wishlist/" + id;
-        } catch (IllegalArgumentException e) { // wish name is empty
+        } catch (DataIntegrityViolationException e) { // wishlist id doesn't exist (foreign key)
+            return "redirect:/";
+        } catch (IllegalArgumentException e) { // invalid wish
             WishList wishList = wishListService.getWishListById(id);
             if (wishList == null) return "redirect:/";
             model.addAttribute("wishList", wishList);
@@ -65,17 +68,33 @@ public class WishListController {
         return "edit-wishlist";
     }
     @PostMapping("/wishlist/edit/{id}")
-    public String editWishList(@PathVariable int id, @ModelAttribute WishList wishList) {
-        wishListService.editWishList(id, wishList);
-        return "redirect:/wishlist/" + id;
-        // back to the wishlist you just edited
+    public String editWishList(@PathVariable int id, @ModelAttribute WishList wishList, Model model) {
+        try {
+            if (wishListService.editWishList(id, wishList) == null) return "redirect:/"; // wishlist doesn't exist
+            return "redirect:/wishlist/" + id; // back to the wishlist you just edited
+        } catch (IllegalArgumentException e) {
+            model.addAttribute("error", e.getMessage()); // empty name
+        } catch (DuplicateKeyException e) {
+            model.addAttribute("error", "A wishlist with that name already exists"); // name is UNIQUE
+        }
+        wishList.setWishList_id(id); // the form needs the id to post back to
+        return "edit-wishlist"; // show the form again with the error and what the user typed
     }
 
     @PostMapping("/wish/edit/{wish_id}")
-    public String editWish(@PathVariable int wish_id, @ModelAttribute Wish wish) {
-        wishListService.editWish(wish_id, wish);
-        return "redirect:/wishlist/" + wish.getWishlist_id(); // back to the wishlist the wish belongs to
-
+    public String editWish(@PathVariable int wish_id, @ModelAttribute Wish wish, Model model) {
+        try {
+            Wish saved = wishListService.editWish(wish_id, wish);
+            if (saved == null) return "redirect:/"; // wish doesn't exist
+            return "redirect:/wishlist/" + saved.getWishlist_id(); // back to the wishlist the wish belongs to
+        } catch (IllegalArgumentException e) {
+            Wish existing = wishListService.getWishById(wish_id);
+            if (existing == null) return "redirect:/";
+            wish.setWish_id(wish_id);
+            wish.setWishlist_id(existing.getWishlist_id());
+            model.addAttribute("error", e.getMessage());
+            return "edit-wish"; // show the form again with the error and what the user typed
+        }
     }
 
     @PostMapping("/wish/delete/{wish_id}")
