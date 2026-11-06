@@ -1,0 +1,57 @@
+
+WishList_Gruppe8/
+│
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── ek/
+│   │   │       └── kea/
+│   │   │           └── wishlist_gruppe8/
+│   │   │               ├── WishListGruppe8Application.java
+│   │   │               │
+│   │   │               ├── controller/
+│   │   │               │   └── WishListController.java
+│   │   │               │
+│   │   │               ├── model/
+│   │   │               │   ├── Wish.java
+│   │   │               │   └── WishList.java
+│   │   │               │
+│   │   │               ├── repository/
+│   │   │               │   └── WishListRepository.java
+│   │   │               │
+│   │   │               └── service/
+│   │   │                   └── WishListService.java
+│   │   │
+│   │   └── resources/
+│   │       ├── static/
+│   │       │   ├── index.css
+│   │       │   └── edit.css
+│   │       │
+│   │       ├── templates/
+│   │       │   ├── index.html
+│   │       │   ├── wishList.html
+│   │       │   ├── editWish.html
+│   │       │   └── editWishList.html
+│   │       │
+│   │       ├── sql/
+│   │       ├── schema.sql
+│   │       └── data.sql
+│   │
+│   └── test/
+│       └── java/
+│           ├── ek/
+│           │   └── kea/
+│           │         └── wishlist_gruppe8/
+│           │                   └── repository/
+│           │                           ├── WishListController.java
+│           │                           └── WishListGruppe8ApplicationTests.java
+│           └── WishListServiceTest
+│
+│
+├── docs/
+│    ├── README.md
+│    └── CONTRIBUTING.md
+│
+├── pom.xml
+├── .gitignore
+└── packageStructure
