@@ -31,10 +31,8 @@ Man kan oprette, redigere og slette ønskelister og ønsker. Hvert ønske kan in
 
 ## Sådan starter du applikationen
 
-1. Klon projektet fra GitHub.
-2. Åbn projektet i IntelliJ.
-3. Kontrollér databaseindstillingerne i konfigurationsfilen.
-4. Åbn http://localhost:8080 i din browser.
+ Åbn [link](https://wishlist-hdf6cre8hucaadgr.denmarkeast-01.azurewebsites.net/
+) i din browser.
 
 ## Projektstyring
 User stories og tasks findes i GitHub Projects.
